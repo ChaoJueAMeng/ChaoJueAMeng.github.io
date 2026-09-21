@@ -1,0 +1,77 @@
+name: 发布萌实验室到用户页
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "0 16 * * *"
+
+concurrency:
+  group: publish-user-site
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: ${{ github.event_name != 'push' || !startsWith(github.event.head_commit.message, '发布萌实验室') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout user site
+        uses: actions/checkout@v4
+
+      - name: Checkout meng-lab
+        uses: actions/checkout@v4
+        with:
+          repository: ChaoJueAMeng/meng-lab
+          path: _meng-lab
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: _meng-lab/package-lock.json
+
+      - name: Build meng-lab for site root
+        working-directory: _meng-lab
+        env:
+          GITHUB_PAGES: "true"
+        run: |
+          npm ci
+          npx astro build --base /
+
+      - name: Refresh html-exp2 homework
+        run: |
+          rm -rf /tmp/html-exp2-src /tmp/html-exp2-keep
+          git clone --depth 1 https://github.com/ChaoJueAMeng/html-exp2.git /tmp/html-exp2-src
+          mkdir -p /tmp/html-exp2-keep
+          cp /tmp/html-exp2-src/index.html /tmp/html-exp2-src/exp_2_1.html /tmp/html-exp2-src/exp_2_2.html \
+             /tmp/html-exp2-src/image-ex-2-1-tianxia.jpg /tmp/html-exp2-src/image-ex-2-2-tiananmen.jpg \
+             /tmp/html-exp2-keep/
+          touch /tmp/html-exp2-keep/.nojekyll
+
+      - name: Publish dist to repo root
+        run: |
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name '.git' ! -name '.github' ! -name '_meng-lab' \
+            -exec rm -rf {} +
+          cp -a _meng-lab/dist/. .
+          rm -rf _meng-lab
+          mkdir -p html-exp2
+          cp -a /tmp/html-exp2-keep/. html-exp2/
+          touch .nojekyll
+
+      - name: Commit published site
+        run: |
+          git config user.name "github-pages-sync"
+          git config user.email "41898282+github-pages-sync[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to publish"
+            exit 0
+          fi
+          git commit -m "发布萌实验室到 GitHub 用户页根路径"
+          git push
