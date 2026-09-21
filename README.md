@@ -1,9 +1,8 @@
 # ChaoJueAMeng.github.io
 
-个人 GitHub Pages 站点。根路径会跳转到萌实验室。
+GitHub 用户页。根路径发布萌实验室站点，实验2 仍在子路径。
 
-- 根路径（跳转）：https://chaojueameng.github.io/ → https://chaojueameng.github.io/meng-lab/
-- 萌实验室：https://chaojueameng.github.io/meng-lab/
+- 萌实验室（根路径）：https://chaojueameng.github.io/
 - 实验2：https://chaojueameng.github.io/html-exp2/
 
-实验2 内容从 [html-exp2](https://github.com/ChaoJueAMeng/html-exp2) 同步到 `html-exp2/` 目录，不会覆盖根路径的跳转页。
+源内容来自 [meng-lab](https://github.com/ChaoJueAMeng/meng-lab)。Actions 工作流会构建并以 `base: /` 发布到本仓库根目录，同时保留 `html-exp2/`。
