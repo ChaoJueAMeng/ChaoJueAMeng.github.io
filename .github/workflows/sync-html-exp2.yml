@@ -27,11 +27,11 @@ jobs:
           mkdir -p html-exp2
           cp /tmp/html-exp2/index.html /tmp/html-exp2/exp_2_1.html /tmp/html-exp2/exp_2_2.html \
              /tmp/html-exp2/image-ex-2-1-tianxia.jpg /tmp/html-exp2/image-ex-2-2-tiananmen.jpg \
-             .
-          cp /tmp/html-exp2/index.html /tmp/html-exp2/exp_2_1.html /tmp/html-exp2/exp_2_2.html \
-             /tmp/html-exp2/image-ex-2-1-tianxia.jpg /tmp/html-exp2/image-ex-2-2-tiananmen.jpg \
              html-exp2/
           touch .nojekyll html-exp2/.nojekyll
+          # 作业只放在 /html-exp2/，不要覆盖个人首页
+          rm -f exp_2_1.html exp_2_2.html \
+            image-ex-2-1-tianxia.jpg image-ex-2-2-tiananmen.jpg
 
       - name: Commit synced pages
         run: |
