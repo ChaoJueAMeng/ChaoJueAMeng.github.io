@@ -1,0 +1,263 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light" data-theme-pref="light"><head><meta charset="utf-8"><script>
+			(function () {
+				var KEY = 'meng-lab-theme';
+				var pref = localStorage.getItem(KEY) || 'light';
+				if (pref !== 'light' && pref !== 'dark' && pref !== 'system') pref = 'light';
+				var theme =
+					pref === 'system'
+						? window.matchMedia('(prefers-color-scheme: dark)').matches
+							? 'dark'
+							: 'light'
+						: pref;
+				document.documentElement.dataset.theme = theme;
+				document.documentElement.dataset.themePref = pref;
+				document.documentElement.style.colorScheme = theme;
+			})();
+		</script><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon.png" sizes="64x64"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v7.3.3"><meta name="description" content="安全优先、可回滚的 Java Coding Agent Runtime。给 Agent 一个能执行、能撤回的边界。"><meta name="color-scheme" content="light dark"><meta name="robots" content="noindex, nofollow"><meta property="og:title" content="M-harness · README · 阿萌的实验室"><meta property="og:description" content="安全优先、可回滚的 Java Coding Agent Runtime。给 Agent 一个能执行、能撤回的边界。"><meta property="og:type" content="website"><meta property="og:url" content="https://chaojueameng.github.io/projects/m-harness/go/"><link rel="canonical" href="https://chaojueameng.github.io/projects/m-harness/go/"><title>M-harness · README · 阿萌的实验室</title><link rel="stylesheet" href="/_astro/BaseLayout.B0xzEaz7.css"></head><body data-page="projects"><div class="site-shell"><style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var l=(n,t)=>{let i=async()=>{await(await n())()},e=typeof t.value=="object"?t.value:void 0,s={timeout:e==null?void 0:e.timeout};"requestIdleCallback"in window?window.requestIdleCallback(i,s):setTimeout(i,s.timeout||200)};(self.Astro||(self.Astro={})).idle=l;window.dispatchEvent(new Event("astro:idle"));})();</script><script>(()=>{var g=Object.defineProperty;var w=(a,s,c)=>s in a?g(a,s,{enumerable:!0,configurable:!0,writable:!0,value:c}):a[s]=c;var l=(a,s,c)=>w(a,typeof s!="symbol"?s+"":s,c);var E=new Set(["__proto__","constructor","prototype"]);{let a={0:t=>y(t),1:t=>c(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(c(t)),5:t=>new Set(c(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>Number.POSITIVE_INFINITY*t},s=t=>{let[p,e]=t;return p in a?a[p](e):void 0},c=t=>t.map(s),y=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([p,e])=>[p,s(e)]));class f extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),n={},d=this.querySelectorAll("template[data-astro-template]");for(let o of d){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute("data-astro-template")||"default"]=o.innerHTML,o.remove())}for(let o of r){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute("name")||"default"]=o.innerHTML)}let u;try{u=this.hasAttribute("props")?y(JSON.parse(this.getAttribute("props"))):{}}catch(o){let i=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(i+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${i}`,this.getAttribute("props"),o),o}let h;await this.hydrator(this)(this.Component,u,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}getRetryImportUrl(e){let r=new URL(e,document.baseURI);return r.searchParams.set("astro-retry",Date.now().toString()),r.toString()}async importWithRetry(e){try{return await import(e)}catch(r){return await new Promise(n=>setTimeout(n,1e3)),import(this.getRetryImportUrl(e))}}handleHydrationError(e){let r=this.getAttribute("component-url"),n=new CustomEvent("astro:hydration-error",{cancelable:!0,bubbles:!0,composed:!0,detail:{error:e,componentUrl:r}});this.dispatchEvent(n)&&console.error(`[astro-island] Error hydrating ${r}`,e)}async start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}try{await Astro[r](async()=>{let n=this.getAttribute("renderer-url");try{let[d,{default:u}]=await Promise.all([this.importWithRetry(this.getAttribute("component-url")),n?this.importWithRetry(n):Promise.resolve({default:()=>()=>{}})]),h=this.getAttribute("component-export")||"default";if(h.includes(".")){this.Component=d;for(let m of h.split(".")){if(E.has(m)||!this.Component||typeof this.Component!="object"&&typeof this.Component!="function"||!Object.hasOwn(this.Component,m))throw new Error(`Invalid component export path: ${h}`);this.Component=this.Component[m]}}else{if(E.has(h))throw new Error(`Invalid component export path: ${h}`);this.Component=d[h]}return this.hydrator=u,this.hydrate}catch(d){return this.handleHydrationError(d),()=>{}}},e,this)}catch(n){this.handleHydrationError(n)}}attributeChangedCallback(){this.hydrate()}}l(f,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",f)}})();</script><astro-island uid="lUucf" prefix="r6" component-url="/_astro/AuroraBackground.BCPJ9xE4.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{}" ssr client="idle" opts="{&quot;name&quot;:&quot;AuroraBackground&quot;,&quot;value&quot;:true}"></astro-island><astro-island uid="1rvLGP" prefix="r7" component-url="/_astro/StarTrail.nXrjoyNi.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{}" ssr client="idle" opts="{&quot;name&quot;:&quot;StarTrail&quot;,&quot;value&quot;:true}" await-children><canvas class="star-trail" aria-hidden="true"></canvas><!--astro:end--></astro-island><astro-island uid="ZWEfHg" prefix="r8" component-url="/_astro/SiteClickSpark.BOqba-XV.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{}" ssr client="idle" opts="{&quot;name&quot;:&quot;SiteClickSpark&quot;,&quot;value&quot;:true}"></astro-island><header class="site-header"><div class="wrap"><astro-island uid="Z2sqVVr" prefix="r11" component-url="/_astro/BrandMagnet.DqVVFxQ0.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{}" ssr client="idle" opts="{&quot;name&quot;:&quot;BrandMagnet&quot;,&quot;value&quot;:true}" await-children><div class="brand-magnet" style="position:relative;display:inline-block"><div class="" style="transform:translate3d(0px, 0px, 0);transition:transform 0.5s ease-in-out;will-change:transform"><astro-slot><a class="brand" href="/"><span class="brand-mark"><img src="/apple-touch-icon.png" alt="" width="27" height="27"></span>阿萌的实验室</a></astro-slot></div></div><!--astro:end--></astro-island><div class="header-end"><nav class="nav" aria-label="主导航"><a href="/">主页</a><a href="/notes">笔记</a><a href="/projects" aria-current="page">作品</a><a href="/about">关于</a></nav><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><astro-island uid="2pavKo" prefix="r9" component-url="/_astro/ThemeToggle._SLMb8OM.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ThemeToggle&quot;,&quot;value&quot;:true}" await-children><div class="theme-toggle" role="radiogroup" aria-label="主题"><button type="button" role="radio" data-option="light" aria-checked="true" class="is-active">浅色</button><button type="button" role="radio" data-option="dark" aria-checked="false">深色</button><button type="button" role="radio" data-option="system" aria-checked="false">系统</button></div><!--astro:end--></astro-island></div></div></header><div class="site-frame"><aside class="site-aside side-aside"><div class="side-stack"><nav class="nav side-nav-links" aria-label="主导航"><a href="/">主页</a><a href="/notes">笔记</a><a href="/projects" aria-current="page">作品</a><a href="/about">关于</a></nav><a class="side-latest" href="/notes/meng-meter"><span class="widget-kicker">最近笔记</span><strong>贴边一条内存柱，比再开一个任务管理器有用</strong><time datetime="2026-10-10T00:00:00.000Z">2026/10/10</time></a></div></aside><main class="wrap"><article class="transit"><p class="kicker">README</p><h1 class="page-title">M-harness<span class="project-status">公开仓库</span></h1><p class="page-desc">安全优先、可回滚的 Java Coding Agent Runtime。给 Agent 一个能执行、能撤回的边界。</p><p class="transit-source">摘自仓库 README ·<a href="https://github.com/ChaoJueAMeng/M-harness/blob/main/README.md" target="_blank" rel="noopener">在 GitHub 打开</a></p><div class="prose"><h1 id="meng-bot">Meng Bot</h1>
+<p>安全优先、可回滚、支持 OpenAI-compatible API 的本地 Coding Agent（当前版本 <code>0.1.0</code>）。</p>
+<p>模型提出行动后，必须经过权限策略和 <code>WorkspaceGuard</code>，才能读写工作区或执行命令。Agent 模式在真正改文件前会把工作区拍成独立 git ref（用户仓库或配置目录里的 sidecar）；失败、取消或手动回滚可恢复。</p>
+<p>提供三种用法：</p>
+<ul>
+<li><strong>Windows 桌面端</strong>（WinUI 3）：新建对话、Ask / Agent、批准框、设置、回滚</li>
+<li><strong>CLI</strong>：<code>ask</code> / <code>agent</code> / <code>status</code> / <code>rollback</code></li>
+<li><strong>本机 HTTP 服务</strong>：只监听 <code>127.0.0.1</code>，供桌面端调用</li>
+</ul>
+<h2 id="仓库结构">仓库结构</h2>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>agent-core</code></td>
+<td>运行时：Agent 循环、工具、权限、checkpoint、OpenAI 兼容客户端</td>
+</tr>
+<tr>
+<td><code>agent-cli</code></td>
+<td>命令行入口，产物 <code>m-harness-cli.jar</code></td>
+</tr>
+<tr>
+<td><code>agent-server</code></td>
+<td>本机 HTTP API，产物 <code>m-harness-server.jar</code></td>
+</tr>
+<tr>
+<td><code>agent-desktop</code></td>
+<td>unpackaged WinUI 3 窗口（不在 Maven 模块里）</td>
+</tr>
+<tr>
+<td><code>installer/</code></td>
+<td>Inno Setup 脚本与绿色版安装/卸载脚本</td>
+</tr>
+<tr>
+<td><code>scripts/publish-desktop.ps1</code></td>
+<td>打包自包含桌面端 + 可选 Setup.exe</td>
+</tr>
+</tbody>
+</table>
+<p>Maven 模块只有 <code>agent-core</code>、<code>agent-cli</code>、<code>agent-server</code>。仓库自带 Maven Wrapper，不必全局安装 Maven。</p>
+<h2 id="要求">要求</h2>
+<ul>
+<li>JDK 21（IntelliJ 可选用 <code>ms-21</code> / <code>jbr-21</code>）</li>
+<li>OpenAI 兼容接口的 API Key（OpenAI、DeepSeek 等）</li>
+<li>从源码跑桌面端另需 .NET 8 SDK（<code>dotnet --list-sdks</code>）</li>
+<li>生成 Setup.exe 还需 <a href="https://jrsoftware.org/isinfo.php">Inno Setup 6</a></li>
+</ul>
+<p>Ask 和 Agent 都可以在非 git 目录里运行。checkpoint 用内嵌 JGit：用户目录已有 <code>.git</code> 时写入该仓库的 ref，否则写入 <code>~/.m-harness/checkpoints/</code>，不会在用户目录 <code>git init</code>。安装包用户不必再装 JDK、.NET SDK 或 Git。</p>
+<h2 id="配置">配置</h2>
+<p>模型设置是<strong>全局</strong>的：桌面端点一次「设置」，所有工作区共用。配置写在用户目录 <code>~/.m-harness/.env</code>（Windows 为 <code>%USERPROFILE%\.m-harness\.env</code>），不要提交这个文件。模板见仓库根目录 <code>.env.example</code>。</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>M_HARNESS_BASE_URL=https://api.openai.com/v1</span></span>
+<span class="line"><span>M_HARNESS_API_KEY=sk-...</span></span>
+<span class="line"><span>M_HARNESS_MODEL=gpt-4o-mini</span></span></code></pre>
+<p>DeepSeek 示例：</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>M_HARNESS_BASE_URL=https://api.deepseek.com/v1</span></span>
+<span class="line"><span>M_HARNESS_API_KEY=sk-...</span></span>
+<span class="line"><span>M_HARNESS_MODEL=deepseek-chat</span></span></code></pre>
+<p>加载顺序：全局 <code>~/.m-harness/.env</code> → 进程环境变量 → 内置默认值。可用 <code>M_HARNESS_CONFIG_DIR</code> 改全局配置目录。</p>
+<p>工作区 <code>.env</code> 和当前目录 <code>.env</code> 只是旧版配置的回退：<strong>仅当全局配置和环境变量都没有提供 API Key 时</strong>才会读取。工作区文件属于不可信的项目内容，不允许它在你已有 Key 的情况下改写 <code>M_HARNESS_BASE_URL</code>，否则打开一个恶意仓库就能把 Key 发到别人的服务器。</p>
+<p>PowerShell 也可临时覆盖：</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">$</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">env:</span><span style="color:#24292E;--shiki-dark:#ADBAC7">M_HARNESS_API_KEY</span><span style="color:#D73A49;--shiki-dark:#F47067">=</span><span style="color:#032F62;--shiki-dark:#96D0FF">"sk-..."</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">$</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">env:</span><span style="color:#24292E;--shiki-dark:#ADBAC7">M_HARNESS_BASE_URL</span><span style="color:#D73A49;--shiki-dark:#F47067">=</span><span style="color:#032F62;--shiki-dark:#96D0FF">"https://api.deepseek.com/v1"</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">$</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">env:</span><span style="color:#24292E;--shiki-dark:#ADBAC7">M_HARNESS_MODEL</span><span style="color:#D73A49;--shiki-dark:#F47067">=</span><span style="color:#032F62;--shiki-dark:#96D0FF">"deepseek-chat"</span></span></code></pre>
+<h2 id="安全模型">安全模型</h2>
+<ul>
+<li><strong>WorkspaceGuard</strong>：相对路径解析到工作区内；已存在路径走 realpath，阻止 <code>../</code> 和符号链接逃出仓库</li>
+<li><strong>Ask</strong>：只读（<code>glob</code> / <code>grep</code> / <code>read_file</code>），写文件和 Shell 直接拒绝</li>
+<li><strong>Agent</strong>：可写文件、跑命令；默认弹出批准框。CLI <code>--yes</code> 或桌面「自动批准」可跳过确认</li>
+<li><strong>Dry-run</strong>：变更工具只返回预览，不落盘，也不拍 checkpoint</li>
+<li><strong>HardDeny</strong>：<code>git push --force</code> / <code>git reset --hard</code> / <code>git clean -fd</code> / <code>rm /</code> / <code>format C:</code> / <code>rd /s</code> / <code>Remove-Item -Recurse -Force</code> / <code>shutdown</code> / <code>reboot</code> 一律禁止，不能被自动批准覆盖。这只是兜底，<code>git log --format</code>、<code>dotnet format</code> 不会误伤</li>
+<li><strong>Checkpoint</strong>：真正会改工作区时才拍快照；运行时异常会尝试自动回滚</li>
+<li><strong>本机服务</strong>：只允许绑定 <code>127.0.0.1</code> / <code>localhost</code>，请求必须带启动时随机生成的 Bearer token；同一时刻只跑一个任务</li>
+</ul>
+<p>发给模型的系统提示会注入工作区摘要、浅层文件树，以及根目录 <code>AGENTS.md</code>（若存在）。<code>AGENTS.md</code> 被标为 untrusted，不能覆盖上述安全规则。</p>
+<p>默认上限：最多 20 步、约 10 万输入 token、单条工具结果约 8k token、历史最多 40 条。可用环境变量 <code>M_HARNESS_MAX_STEPS</code> / <code>M_HARNESS_MAX_INPUT_TOKENS</code> / <code>M_HARNESS_MAX_TOOL_RESULT_TOKENS</code> / <code>M_HARNESS_MAX_HISTORY_MESSAGES</code> 覆盖。裁剪按粗估 token（拉丁约 4 字符、CJK 约 1 字符）。超限时先丢更早会话的轮次，再按「一次工具调用 + 其全部结果」为单位丢掉本轮最旧的步骤；当前任务和最近一个步骤始终保留。同一工具同一参数连续失败 3 次会停止。取消会打断正在等待的模型调用和 <code>run_terminal</code> 进程树；429 / 5xx 最多重试 3 次。诊断写在 <code>~/.m-harness/logs/m-harness.log</code>。</p>
+<h2 id="构建">构建</h2>
+<p>在 IntelliJ 中把项目 JDK 设为 21，或在终端指定 <code>JAVA_HOME</code>（IntelliJ 安装的 JDK 一般在 <code>%USERPROFILE%\.jdks\</code>）：</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">$</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">env:</span><span style="color:#24292E;--shiki-dark:#ADBAC7">JAVA_HOME</span><span style="color:#D73A49;--shiki-dark:#F47067">=</span><span style="color:#032F62;--shiki-dark:#96D0FF">"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">$</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">env:</span><span style="color:#24292E;--shiki-dark:#ADBAC7">USERPROFILE</span><span style="color:#032F62;--shiki-dark:#96D0FF">\.jdks\ms-21.0.12"</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">.\</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">mvnw.cmd</span><span style="color:#D73A49;--shiki-dark:#F47067"> -</span><span style="color:#24292E;--shiki-dark:#ADBAC7">pl agent</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">cli</span><span style="color:#D73A49;--shiki-dark:#F47067">,</span><span style="color:#24292E;--shiki-dark:#ADBAC7">agent</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">server </span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">am package</span></span></code></pre>
+<p>产物：</p>
+<ul>
+<li><code>agent-cli/target/m-harness-cli.jar</code></li>
+<li><code>agent-server/target/m-harness-server.jar</code></li>
+</ul>
+<p>跑测试：</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">.\</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">mvnw.cmd</span><span style="color:#24292E;--shiki-dark:#ADBAC7"> test</span></span></code></pre>
+<h2 id="桌面端winui-3">桌面端（WinUI 3）</h2>
+<p>需要 JDK 21、.NET 8 SDK。窗口会拉起本机 Java 服务（只听 <code>127.0.0.1</code>，端口由系统分配），关掉窗口时结束整棵 Java 进程树。</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">$</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">env:</span><span style="color:#24292E;--shiki-dark:#ADBAC7">JAVA_HOME</span><span style="color:#D73A49;--shiki-dark:#F47067">=</span><span style="color:#032F62;--shiki-dark:#96D0FF">"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">$</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">env:</span><span style="color:#24292E;--shiki-dark:#ADBAC7">USERPROFILE</span><span style="color:#032F62;--shiki-dark:#96D0FF">\.jdks\ms-21.0.12"</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">.\</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">mvnw.cmd</span><span style="color:#D73A49;--shiki-dark:#F47067"> -</span><span style="color:#24292E;--shiki-dark:#ADBAC7">pl agent</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">server </span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">am package</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">dotnet run </span><span style="color:#D73A49;--shiki-dark:#F47067">--</span><span style="color:#24292E;--shiki-dark:#ADBAC7">project agent</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">desktop\MHarness.Desktop.csproj </span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">c Debug </span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">p:Platform</span><span style="color:#D73A49;--shiki-dark:#F47067">=</span><span style="color:#24292E;--shiki-dark:#ADBAC7">x64</span></span></code></pre>
+<p>这是 WinUI 窗口程序，终端里通常没有日志。成功时会弹出标题为 <strong>Meng Bot</strong> 的窗口，关掉窗口后 <code>dotnet run</code> 才会结束。若立刻回到提示符，说明进程秒退，可直接运行：</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">.\agent</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">desktop\bin\x64\Debug\net8.</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">0</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">windows10.</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">0.19041</span><span style="color:#24292E;--shiki-dark:#ADBAC7">.</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">0</span><span style="color:#24292E;--shiki-dark:#ADBAC7">\win</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">x64\</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">MHarness.Desktop.exe</span></span></code></pre>
+<p>窗口会自动查找 JDK 21：先看 exe 旁的 <code>jre</code>（安装包自带），再看 <code>JAVA_HOME</code>，再看 <code>%USERPROFILE%\.jdks\</code>，最后才用 PATH 上版本 ≥ 21 的 <code>java</code>。不要依赖 PATH 上的 Java 8。</p>
+<p>窗口会自动查找 <code>m-harness-server.jar</code>：环境变量 <code>M_HARNESS_SERVER_JAR</code> → exe 旁 → 向上查找 <code>agent-server/target/m-harness-server.jar</code>。</p>
+<p>Java 服务意外退出时窗口会自动重新拉起；若启动后 30 秒内连续退出两次则停止自动重启，状态栏会给出退出码，点「发送」可手动再试，细节写在 <code>~/.m-harness/desktop-crash.log</code>。</p>
+<p>窗口里可以：</p>
+<ul>
+<li><strong>新建对话</strong> 先进入选择页：从空白开始，或使用已有文件夹。空白对话的 Ask / Agent 写到 <code>~/.m-harness/scratch/&lt;对话 id&gt;</code>；之后仍可用上方工作区芯片绑定真实项目（不自动搬运临时文件）</li>
+<li>用 <strong>Ask</strong>（只读）或 <strong>Agent</strong>（可改文件）发送任务</li>
+<li>勾选 <strong>Dry-run</strong> 只预览写操作和 Shell</li>
+<li>勾选 <strong>自动批准</strong> 跳过写文件 / Shell 确认框（HardDeny 仍然生效）</li>
+<li>缺 API Key 时点「设置」，写入全局 <code>~/.m-harness/.env</code>（界面不回显完整 Key，所有工作区共用）</li>
+<li>Agent 模式下写文件和 Shell 会弹出批准框；可随时点「停止」取消当前任务</li>
+<li>「回滚」把工作区恢复到最近一次 checkpoint</li>
+<li>左侧对话区看模型流式输出，右侧工具日志看每次工具执行</li>
+</ul>
+<h2 id="安装包windows-x64">安装包（Windows x64）</h2>
+<p>不要做成 MSIX：Agent 要在用户任选的目录里读写文件、执行 Shell，MSIX 沙箱会拦住 Java 子进程。正确做法是 <strong>unpackaged 自包含发布 + 捆绑 JRE + Inno Setup</strong>。</p>
+<p>本机需要 JDK 21（用于 <code>jlink</code>）、.NET 8 SDK。生成 Setup.exe 还需 Inno Setup 6。</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">$</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">env:</span><span style="color:#24292E;--shiki-dark:#ADBAC7">JAVA_HOME</span><span style="color:#D73A49;--shiki-dark:#F47067">=</span><span style="color:#032F62;--shiki-dark:#96D0FF">"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">$</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">env:</span><span style="color:#24292E;--shiki-dark:#ADBAC7">USERPROFILE</span><span style="color:#032F62;--shiki-dark:#96D0FF">\.jdks\ms-21.0.12"</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">.</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">\scripts\publish-desktop.ps1</span></span></code></pre>
+<p>产物在 <code>dist/</code>：</p>
+<ul>
+<li><code>Meng-Bot-Setup-0.1.0.exe</code> — <strong>Inno Setup 安装包</strong>。双击安装到 <code>%LOCALAPPDATA%\Programs\Meng Bot</code>，写入开始菜单，可在「设置 &gt; 应用」里卸载。不弹管理员 UAC。最低系统 Windows 10 1809（10.0.17763）。</li>
+<li><code>app/</code> — 发布目录，可直接运行 <code>MHarness.Desktop.exe</code></li>
+<li><code>Meng-Bot-0.1.0-win-x64.zip</code> — 绿色版（解压即用；目录内也有 <code>Install.ps1</code> / <code>Uninstall.ps1</code>）</li>
+</ul>
+<p>向别人分发时给 <code>Setup.exe</code> 即可。装好后不必再装 JDK、.NET SDK 或 Git。工作区不必是 git 仓库。</p>
+<p>只要绿色版、不编安装程序：</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">.</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">\scripts\publish-desktop.ps1</span><span style="color:#D73A49;--shiki-dark:#F47067"> -</span><span style="color:#24292E;--shiki-dark:#ADBAC7">SkipInstaller</span></span></code></pre>
+<p>不捆绑 JRE（目标机器自己有 JDK 21）：</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">.</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">\scripts\publish-desktop.ps1</span><span style="color:#D73A49;--shiki-dark:#F47067"> -</span><span style="color:#24292E;--shiki-dark:#ADBAC7">SkipJre</span></span></code></pre>
+<h2 id="命令行">命令行</h2>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">java </span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">jar agent</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">cli</span><span style="color:#D73A49;--shiki-dark:#F47067">/</span><span style="color:#24292E;--shiki-dark:#ADBAC7">target</span><span style="color:#D73A49;--shiki-dark:#F47067">/</span><span style="color:#24292E;--shiki-dark:#ADBAC7">m</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">harness</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">cli.jar ask </span><span style="color:#032F62;--shiki-dark:#96D0FF">"这个仓库做什么"</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">java </span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">jar agent</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">cli</span><span style="color:#D73A49;--shiki-dark:#F47067">/</span><span style="color:#24292E;--shiki-dark:#ADBAC7">target</span><span style="color:#D73A49;--shiki-dark:#F47067">/</span><span style="color:#24292E;--shiki-dark:#ADBAC7">m</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">harness</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">cli.jar agent </span><span style="color:#032F62;--shiki-dark:#96D0FF">"修复这个 bug"</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">java </span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">jar agent</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">cli</span><span style="color:#D73A49;--shiki-dark:#F47067">/</span><span style="color:#24292E;--shiki-dark:#ADBAC7">target</span><span style="color:#D73A49;--shiki-dark:#F47067">/</span><span style="color:#24292E;--shiki-dark:#ADBAC7">m</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">harness</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">cli.jar agent </span><span style="color:#D73A49;--shiki-dark:#F47067">--</span><span style="color:#24292E;--shiki-dark:#ADBAC7">dry</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">run </span><span style="color:#032F62;--shiki-dark:#96D0FF">"把登录 bug 修一下"</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">java </span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">jar agent</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">cli</span><span style="color:#D73A49;--shiki-dark:#F47067">/</span><span style="color:#24292E;--shiki-dark:#ADBAC7">target</span><span style="color:#D73A49;--shiki-dark:#F47067">/</span><span style="color:#24292E;--shiki-dark:#ADBAC7">m</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">harness</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">cli.jar agent </span><span style="color:#D73A49;--shiki-dark:#F47067">--</span><span style="color:#24292E;--shiki-dark:#ADBAC7">yes </span><span style="color:#032F62;--shiki-dark:#96D0FF">"运行测试并修失败用例"</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">java </span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">jar agent</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">cli</span><span style="color:#D73A49;--shiki-dark:#F47067">/</span><span style="color:#24292E;--shiki-dark:#ADBAC7">target</span><span style="color:#D73A49;--shiki-dark:#F47067">/</span><span style="color:#24292E;--shiki-dark:#ADBAC7">m</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">harness</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">cli.jar status</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">java </span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">jar agent</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">cli</span><span style="color:#D73A49;--shiki-dark:#F47067">/</span><span style="color:#24292E;--shiki-dark:#ADBAC7">target</span><span style="color:#D73A49;--shiki-dark:#F47067">/</span><span style="color:#24292E;--shiki-dark:#ADBAC7">m</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">harness</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">cli.jar rollback</span></span></code></pre>
+<p><code>--workspace</code> 可指向目标仓库。Ask 只读。Agent 默认会询问写文件和 Shell；<code>--yes</code> 自动批准。<code>--dry-run</code> 只预览写操作和命令。</p>
+<p>退出码：<code>0</code> 成功，<code>1</code> 失败，<code>2</code> 达到步数上限（checkpoint 仍保留），<code>130</code> 取消。</p>
+<h2 id="本机-http-api">本机 HTTP API</h2>
+<p>调试时可单独启动服务：</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">java </span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">jar agent</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">server</span><span style="color:#D73A49;--shiki-dark:#F47067">/</span><span style="color:#24292E;--shiki-dark:#ADBAC7">target</span><span style="color:#D73A49;--shiki-dark:#F47067">/</span><span style="color:#24292E;--shiki-dark:#ADBAC7">m</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">harness</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">server.jar </span><span style="color:#D73A49;--shiki-dark:#F47067">--</span><span style="color:#24292E;--shiki-dark:#ADBAC7">bind </span><span style="color:#005CC5;--shiki-dark:#6CB6FF">127.0</span><span style="color:#24292E;--shiki-dark:#ADBAC7">.</span><span style="color:#005CC5;--shiki-dark:#6CB6FF">0.1</span><span style="color:#D73A49;--shiki-dark:#F47067"> --</span><span style="color:#24292E;--shiki-dark:#ADBAC7">port </span><span style="color:#005CC5;--shiki-dark:#6CB6FF">0</span></span></code></pre>
+<p>启动后第一行 JSON 为 <code>port</code> 和 <code>token</code>，之后请求需带 <code>Authorization: Bearer &lt;token&gt;</code>。可选 <code>--token</code> 指定口令。非本机地址会拒绝启动。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>路径</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/health</code></td>
+<td>探活</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/v1/run</code></td>
+<td>启动任务（<code>workspace</code> / <code>prompt</code> / <code>mode</code> / <code>dryRun</code> / <code>autoApprove</code>），返回 <code>runId</code>；已有任务时 <code>409</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/run/{id}/events</code></td>
+<td>SSE：<code>token</code> / <code>tool</code> / <code>approval</code> / <code>done</code></td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/v1/run/{id}/approval</code></td>
+<td>批准或拒绝挂起的写操作</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/v1/run/{id}/cancel</code></td>
+<td>取消任务并拒绝待批准请求</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/checkpoint</code></td>
+<td>查询当前 checkpoint；该工作区有任务在跑时 <code>409</code></td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/v1/rollback</code></td>
+<td>回滚到最近 checkpoint；该工作区有任务在跑时 <code>409</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/settings</code></td>
+<td>读取全局设置（Key 只返回是否已设置和后四位）</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><code>/v1/settings</code></td>
+<td>写入全局 <code>~/.m-harness/.env</code></td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/v1/title</code></td>
+<td>根据第一条用户消息生成侧栏标题，返回 <code>{ "title": "..." }</code>；不占用正在运行的任务</td>
+</tr>
+</tbody>
+</table>
+<h2 id="工具">工具</h2>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>glob</code></td>
+<td>按 glob 列文件，最多 200 条；跳过 <code>.git</code> / <code>target</code> / <code>node_modules</code></td>
+</tr>
+<tr>
+<td><code>grep</code></td>
+<td>精确搜索；优先调用本机 <code>rg</code>（<code>-e</code> + <code>--</code>，读满 50 条即停），否则 Java 遍历。最多 50 条</td>
+</tr>
+<tr>
+<td><code>read_file</code></td>
+<td>读文件（可指定行偏移/行数），输出带行号，约 32KB 截断。UTF-8 / BOM / GB18030</td>
+</tr>
+<tr>
+<td><code>search_replace</code></td>
+<td>替换文件中恰好出现一次的旧字符串；匹配前归一换行，写回原 EOL；不唯一时返回最多 5 处行号</td>
+</tr>
+<tr>
+<td><code>write_file</code></td>
+<td><strong>仅新建</strong>；目标已存在则失败，应改用 <code>search_replace</code></td>
+</tr>
+<tr>
+<td><code>run_terminal</code></td>
+<td>在工作区根执行一条命令；超时 120 秒会杀掉进程树</td>
+</tr>
+</tbody>
+</table>
+<p>变更类工具是 <code>search_replace</code>、<code>write_file</code>、<code>run_terminal</code>。Shell 工作目录锁定在工作区根。</p>
+<h2 id="checkpoint">Checkpoint</h2>
+<p>快照写在 <code>refs/m-harness/checkpoints/&lt;id&gt;</code>，不会使用 <code>git stash</code>，也不会在启动时 reset 工作区。快照包含当时磁盘上的普通文件，跳过 <code>.git</code> / <code>target</code> / <code>node_modules</code> / <code>dist</code> / <code>.venv</code> 等构建与依赖目录、<code>.gitignore</code> 里能识别的单段目录名、大于 2MB 或常见二进制、符号链接，以及 realpath 已在工作区之外的目录（junction）。<code>id</code> 带毫秒时间前缀，<code>status</code> / <code>rollback</code> 里的「最近一次」按创建时间判定，每个工作区最多保留 20 个快照，更早的自动删除。</p>
+<ul>
+<li>工作区已有 <code>.git</code>：ref 写进用户仓库</li>
+<li>否则：写入 <code>~/.m-harness/checkpoints/&lt;工作区路径 SHA-256&gt;/</code> 的 sidecar 裸仓库，用户目录不会出现 <code>.git</code></li>
+</ul>
+<p>Ask 和 dry-run 不拍快照。任务成功后删除该 ref；运行时异常会尝试自动回滚；步数上限或取消时 ref 保留，可手动 <code>rollback</code>。回滚会把快照里的文件写回，并删除快照之后新建的文件；快照没有覆盖的 <code>target</code> / <code>node_modules</code> / 符号链接不会被碰。</p>
+<h2 id="许可证">许可证</h2>
+<p>MIT。详见 <a href="https://github.com/ChaoJueAMeng/M-harness/blob/main/LICENSE">LICENSE</a>。</p>
+</div><div class="transit-actions"><p class="transit-url">原地址<a href="https://github.com/ChaoJueAMeng/M-harness" target="_blank" rel="noopener">https://github.com/ChaoJueAMeng/M-harness</a></p><a class="transit-cta" href="https://github.com/ChaoJueAMeng/M-harness" target="_blank" rel="noopener">前往原地址</a></div><p><a class="transit-back" href="/projects">返回</a></p></article></main><aside class="site-aside widgets-aside"><div class="widget-stack"><script>(()=>{var a=(s,i,o)=>{let r=async()=>{await(await s())()},t=typeof i.value=="object"?i.value:void 0,c={rootMargin:t==null?void 0:t.rootMargin},n=new IntersectionObserver(e=>{for(let l of e)if(l.isIntersecting){n.disconnect(),r();break}},c);for(let e of o.children)n.observe(e)};(self.Astro||(self.Astro={})).visible=a;window.dispatchEvent(new Event("astro:visible"));})();</script><astro-island uid="ZUuafC" prefix="r14" component-url="/_astro/ClockCard.Bky8J4Ej.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{}" ssr client="visible" opts="{&quot;name&quot;:&quot;ClockCard&quot;,&quot;value&quot;:true}" await-children><section class="widget-card clock-card" aria-label="当前日期和时间"><p class="widget-kicker">现在</p><p class="clock-time">––:––:––</p><p class="clock-date">上海时间</p></section><!--astro:end--></astro-island><astro-island uid="ikjdu" prefix="r15" component-url="/_astro/NowBuilding.Bt8u0NwF.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{&quot;title&quot;:[0,&quot;Loop Lab&quot;],&quot;status&quot;:[0,&quot;实验中&quot;],&quot;href&quot;:[0,&quot;/projects/loop-lab/go&quot;]}" ssr client="visible" opts="{&quot;name&quot;:&quot;NowBuilding&quot;,&quot;value&quot;:true}" await-children><section class="widget-card"><p class="widget-kicker">正在做</p><a class="now-title" href="/projects/loop-lab/go">Loop Lab</a><p class="now-status"><span class="now-dot" aria-hidden="true"></span>实验中</p></section><!--astro:end--></astro-island><section class="widget-card"><h2 class="widget-kicker">标签</h2><div class="tag-cloud"><span style="--w:1">Java</span><span style="--w:0.75">Agent</span><span style="--w:0.5">Rust</span><span style="--w:0.5">Spring Boot</span><span style="--w:0.5">uni-app</span><span style="--w:0.25">全栈</span><span style="--w:0.25">桌面</span><span style="--w:0.25">Android</span><span style="--w:0.25">ASS</span><span style="--w:0.25">Cloudflare Workers</span><span style="--w:0.25">Kotlin</span><span style="--w:0.25">Python</span><span style="--w:0.25">Tauri</span><span style="--w:0.25">TypeScript</span><span style="--w:0.25">Whisper</span></div></section><section class="widget-card"><h2 class="widget-kicker">最新笔记</h2><ol class="widget-notes"><li><a href="/notes/meng-meter">贴边一条内存柱，比再开一个任务管理器有用</a><time datetime="2026-10-10T00:00:00.000Z">2026/10/10</time></li><li><a href="/notes/m-harness">给 Agent 写文件之前，先挡住工作区里的 .env</a><time datetime="2026-09-20T00:00:00.000Z">2026/09/20</time></li><li><a href="/notes/notiask-direct-reply">通知栏里直接问 AI：NotiAsk 为什么值得做</a><time datetime="2026-08-29T00:00:00.000Z">2026/08/29</time></li></ol></section><section class="widget-card"><h2 class="widget-kicker">公开动态</h2><div class="activity-week" aria-hidden="true"><span class="activity-cell" style="--n:0"></span><span class="activity-cell is-on" style="--n:4"></span><span class="activity-cell" style="--n:0"></span><span class="activity-cell" style="--n:0"></span><span class="activity-cell" style="--n:0"></span><span class="activity-cell is-on" style="--n:2"></span><span class="activity-cell is-on" style="--n:1"></span></div><ol class="activity-list"><li><a href="https://github.com/ChaoJueAMeng/meng-lab">merged PR · ChaoJueAMeng/meng-lab</a><time>10/15 00:21</time></li><li><a href="https://github.com/ChaoJueAMeng/meng-lab">推送到 ChaoJueAMeng/meng-lab</a><time>10/14 13:48</time></li><li><a href="https://github.com/ChaoJueAMeng/meng-lab">opened PR · ChaoJueAMeng/meng-lab</a><time>10/14 13:30</time></li><li><a href="https://github.com/ChaoJueAMeng/meng-meter">发布 ChaoJueAMeng/meng-meter</a><time>10/10 22:47</time></li></ol><a class="widget-more" href="https://github.com/ChaoJueAMeng">GitHub</a></section></div></aside></div><footer class="site-footer"><div class="wrap"><span>© 2026 <astro-island uid="19Y5w5" prefix="r10" component-url="/_astro/ShinyLabel.BySOkNGa.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{&quot;text&quot;:[0,&quot;阿萌&quot;]}" ssr client="visible" opts="{&quot;name&quot;:&quot;ShinyLabel&quot;,&quot;value&quot;:true}" await-children><span class="shiny-text " style="background-image:linear-gradient(120deg, #6b645b 0%, #6b645b 35%, #1c1915 50%, #6b645b 65%, #6b645b 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-position:150% center">阿萌</span><!--astro:end--></astro-island></span><a href="https://github.com/ChaoJueAMeng">GitHub</a></div></footer></div><script type="module">var e=document.querySelector(`.widgets-aside`);if(e){let t=!1,n=0,r=0,i=()=>e.scrollHeight-e.clientHeight,a=()=>{let t=i();if(t<=1)return!0;let n=e.scrollTop;return n<=1||n>=t-1},o=e=>e.deltaMode===1?e.deltaY*16:e.deltaMode===2?e.deltaY*window.innerHeight:e.deltaY,s=()=>{let e=document.scrollingElement;if(!e||n===0){n=0,r=0;return}let t=n*.5;n-=t;let i=Math.max(0,e.scrollHeight-e.clientHeight),a=Math.min(i,Math.max(0,e.scrollTop+t));a===e.scrollTop?n=0:e.scrollTop=a,Math.abs(n)>.5?r=requestAnimationFrame(s):(n!==0&&(e.scrollTop=Math.min(i,Math.max(0,e.scrollTop+n))),n=0,r=0)},c=t=>{if(t.ctrlKey||t.deltaY===0)return;let a=o(t),c=i();if((a>0?Math.max(0,c-e.scrollTop):e.scrollTop)>1){n=0;return}t.preventDefault(),n+=a,r||=requestAnimationFrame(s)},l=()=>{let n=a();n!==t&&(t=n,t?e.addEventListener(`wheel`,c,{passive:!1}):e.removeEventListener(`wheel`,c))};e.addEventListener(`scroll`,l,{passive:!0}),window.addEventListener(`resize`,l,{passive:!0}),new ResizeObserver(()=>l()).observe(e),l()}</script></body></html>

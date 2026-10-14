@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light" data-theme-pref="light"><head><meta charset="utf-8"><script>
+			(function () {
+				var KEY = 'meng-lab-theme';
+				var pref = localStorage.getItem(KEY) || 'light';
+				if (pref !== 'light' && pref !== 'dark' && pref !== 'system') pref = 'light';
+				var theme =
+					pref === 'system'
+						? window.matchMedia('(prefers-color-scheme: dark)').matches
+							? 'dark'
+							: 'light'
+						: pref;
+				document.documentElement.dataset.theme = theme;
+				document.documentElement.dataset.themePref = pref;
+				document.documentElement.style.colorScheme = theme;
+			})();
+		</script><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon.png" sizes="64x64"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v7.3.3"><meta name="description" content="通过 Android 通知栏 Direct Reply 直接向 AI 提问，不必先打开聊天应用。"><meta name="color-scheme" content="light dark"><meta name="robots" content="noindex, nofollow"><meta property="og:title" content="NotiAsk · README · 阿萌的实验室"><meta property="og:description" content="通过 Android 通知栏 Direct Reply 直接向 AI 提问，不必先打开聊天应用。"><meta property="og:type" content="website"><meta property="og:url" content="https://chaojueameng.github.io/projects/notiask/go/"><link rel="canonical" href="https://chaojueameng.github.io/projects/notiask/go/"><title>NotiAsk · README · 阿萌的实验室</title><link rel="stylesheet" href="/_astro/BaseLayout.B0xzEaz7.css"></head><body data-page="projects"><div class="site-shell"><style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var l=(n,t)=>{let i=async()=>{await(await n())()},e=typeof t.value=="object"?t.value:void 0,s={timeout:e==null?void 0:e.timeout};"requestIdleCallback"in window?window.requestIdleCallback(i,s):setTimeout(i,s.timeout||200)};(self.Astro||(self.Astro={})).idle=l;window.dispatchEvent(new Event("astro:idle"));})();</script><script>(()=>{var g=Object.defineProperty;var w=(a,s,c)=>s in a?g(a,s,{enumerable:!0,configurable:!0,writable:!0,value:c}):a[s]=c;var l=(a,s,c)=>w(a,typeof s!="symbol"?s+"":s,c);var E=new Set(["__proto__","constructor","prototype"]);{let a={0:t=>y(t),1:t=>c(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(c(t)),5:t=>new Set(c(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>Number.POSITIVE_INFINITY*t},s=t=>{let[p,e]=t;return p in a?a[p](e):void 0},c=t=>t.map(s),y=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([p,e])=>[p,s(e)]));class f extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),n={},d=this.querySelectorAll("template[data-astro-template]");for(let o of d){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute("data-astro-template")||"default"]=o.innerHTML,o.remove())}for(let o of r){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute("name")||"default"]=o.innerHTML)}let u;try{u=this.hasAttribute("props")?y(JSON.parse(this.getAttribute("props"))):{}}catch(o){let i=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(i+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${i}`,this.getAttribute("props"),o),o}let h;await this.hydrator(this)(this.Component,u,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}getRetryImportUrl(e){let r=new URL(e,document.baseURI);return r.searchParams.set("astro-retry",Date.now().toString()),r.toString()}async importWithRetry(e){try{return await import(e)}catch(r){return await new Promise(n=>setTimeout(n,1e3)),import(this.getRetryImportUrl(e))}}handleHydrationError(e){let r=this.getAttribute("component-url"),n=new CustomEvent("astro:hydration-error",{cancelable:!0,bubbles:!0,composed:!0,detail:{error:e,componentUrl:r}});this.dispatchEvent(n)&&console.error(`[astro-island] Error hydrating ${r}`,e)}async start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}try{await Astro[r](async()=>{let n=this.getAttribute("renderer-url");try{let[d,{default:u}]=await Promise.all([this.importWithRetry(this.getAttribute("component-url")),n?this.importWithRetry(n):Promise.resolve({default:()=>()=>{}})]),h=this.getAttribute("component-export")||"default";if(h.includes(".")){this.Component=d;for(let m of h.split(".")){if(E.has(m)||!this.Component||typeof this.Component!="object"&&typeof this.Component!="function"||!Object.hasOwn(this.Component,m))throw new Error(`Invalid component export path: ${h}`);this.Component=this.Component[m]}}else{if(E.has(h))throw new Error(`Invalid component export path: ${h}`);this.Component=d[h]}return this.hydrator=u,this.hydrate}catch(d){return this.handleHydrationError(d),()=>{}}},e,this)}catch(n){this.handleHydrationError(n)}}attributeChangedCallback(){this.hydrate()}}l(f,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",f)}})();</script><astro-island uid="lUucf" prefix="r6" component-url="/_astro/AuroraBackground.BCPJ9xE4.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{}" ssr client="idle" opts="{&quot;name&quot;:&quot;AuroraBackground&quot;,&quot;value&quot;:true}"></astro-island><astro-island uid="1rvLGP" prefix="r7" component-url="/_astro/StarTrail.nXrjoyNi.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{}" ssr client="idle" opts="{&quot;name&quot;:&quot;StarTrail&quot;,&quot;value&quot;:true}" await-children><canvas class="star-trail" aria-hidden="true"></canvas><!--astro:end--></astro-island><astro-island uid="ZWEfHg" prefix="r8" component-url="/_astro/SiteClickSpark.BOqba-XV.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{}" ssr client="idle" opts="{&quot;name&quot;:&quot;SiteClickSpark&quot;,&quot;value&quot;:true}"></astro-island><header class="site-header"><div class="wrap"><astro-island uid="Z2sqVVr" prefix="r11" component-url="/_astro/BrandMagnet.DqVVFxQ0.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{}" ssr client="idle" opts="{&quot;name&quot;:&quot;BrandMagnet&quot;,&quot;value&quot;:true}" await-children><div class="brand-magnet" style="position:relative;display:inline-block"><div class="" style="transform:translate3d(0px, 0px, 0);transition:transform 0.5s ease-in-out;will-change:transform"><astro-slot><a class="brand" href="/"><span class="brand-mark"><img src="/apple-touch-icon.png" alt="" width="27" height="27"></span>阿萌的实验室</a></astro-slot></div></div><!--astro:end--></astro-island><div class="header-end"><nav class="nav" aria-label="主导航"><a href="/">主页</a><a href="/notes">笔记</a><a href="/projects" aria-current="page">作品</a><a href="/about">关于</a></nav><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><astro-island uid="2pavKo" prefix="r9" component-url="/_astro/ThemeToggle._SLMb8OM.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ThemeToggle&quot;,&quot;value&quot;:true}" await-children><div class="theme-toggle" role="radiogroup" aria-label="主题"><button type="button" role="radio" data-option="light" aria-checked="true" class="is-active">浅色</button><button type="button" role="radio" data-option="dark" aria-checked="false">深色</button><button type="button" role="radio" data-option="system" aria-checked="false">系统</button></div><!--astro:end--></astro-island></div></div></header><div class="site-frame"><aside class="site-aside side-aside"><div class="side-stack"><nav class="nav side-nav-links" aria-label="主导航"><a href="/">主页</a><a href="/notes">笔记</a><a href="/projects" aria-current="page">作品</a><a href="/about">关于</a></nav><a class="side-latest" href="/notes/meng-meter"><span class="widget-kicker">最近笔记</span><strong>贴边一条内存柱，比再开一个任务管理器有用</strong><time datetime="2026-10-10T00:00:00.000Z">2026/10/10</time></a></div></aside><main class="wrap"><article class="transit"><p class="kicker">README</p><h1 class="page-title">NotiAsk<span class="project-status">公开仓库</span></h1><p class="page-desc">通过 Android 通知栏 Direct Reply 直接向 AI 提问，不必先打开聊天应用。</p><p class="transit-source">摘自仓库 README ·<a href="https://github.com/ChaoJueAMeng/NotiAsk/blob/main/README.md" target="_blank" rel="noopener">在 GitHub 打开</a></p><div class="prose"><div align="center">
+<h1 id="notiask">NotiAsk</h1>
+<p>AI 不应该总藏在 App 里。</p>
+<h3 id="notiask-把-ai-入口放进你每天都会打开的通知栏">NotiAsk 把 AI 入口放进你每天都会打开的<em>通知栏</em>。</h3>
+<p><strong>下拉通知栏 → 提问 → 在通知栏查看回答。</strong></p>
+<p><a href="https://github.com/ChaoJueAMeng/NotiAsk/blob/main/README.en.md">English</a> · <a href="#-%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7">功能特性</a> · <a href="#-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B">快速开始</a> · <a href="#-%E6%9C%8D%E5%8A%A1%E5%95%86%E9%85%8D%E7%BD%AE">服务商配置</a> · <a href="#-%E9%9A%90%E7%A7%81%E4%B8%8E%E5%AE%89%E5%85%A8">隐私与安全</a></p>
+</div>
+<!--
+  建议在发布前在此放入 10–20 秒演示 GIF：
+  下拉通知栏 → 输入问题 → 查看回答 → 截屏搜索。
+  示例：![NotiAsk demo](https://github.com/ChaoJueAMeng/NotiAsk/raw/main/docs/demo.gif)
+-->
+<h2 id="-为什么选择-notiask">🎯 为什么选择 NotiAsk？</h2>
+<p>常见的 AI 使用路径是：</p>
+<blockquote>
+<p><strong>正在使用App → 想到问题 → 切换APP或开启浮窗来向AI提问 → 等待回答··· → 再切回原来的APP</strong></p>
+</blockquote>
+<p>NotiAsk 想把它改进为：</p>
+<blockquote>
+<p><strong>正在使用App → 想到问题 → 下拉通知栏向AI提问 → 继续手头的事 → 随时在通知栏查看回答</strong></p>
+</blockquote>
+<p>NotiAsk 的优势在于：</p>
+<ul>
+<li><strong>无需退出正在使用的App或分屏浮窗，下拉通知栏即问，也可以一键截屏提问</strong></li>
+<li><strong>输入问题时，你可以随时轻易地上滑返回，再看一眼你要问什么、或者再回复一条消息，NotiAsk会保留你的提问草稿</strong></li>
+<li><strong>提问后，AI 会在后台生成回答，你可以继续手头的事</strong></li>
+<li><strong>回答完成后会发送通知，你可以随时在通知栏展开查看和复制</strong></li>
+</ul>
+<h3 id="它不试图成为另一个聊天客户端而是让-ai-在需要时像系统功能一样随手可用更少的界面切换更少的打断">它不试图成为另一个聊天客户端，而是让 AI 在需要时像系统功能一样随手可用：更少的界面切换，更少的打断。</h3>
+<h2 id="-核心特性">✨ 核心特性</h2>
+<blockquote>
+<ul>
+<li><strong>通知栏直接提问</strong>：使用 Android Direct Reply，在常驻通知的输入框中发问。</li>
+<li><strong>回答留在通知栏</strong>：AI 的回答以可展开通知呈现，可一键复制到剪贴板。</li>
+<li><strong>截屏后提问</strong>：从通知栏发起截屏；截屏完成后可补充问题，或让支持视觉的模型直接解读屏幕内容。</li>
+<li><strong>通知栏内切换模型</strong>：不打开 App 也能在已保存的配置之间切换；当前模型会置顶，配置较多时支持分页。</li>
+<li><strong>多服务商、多配置</strong>：可保存并命名多套 API 配置，随时设为当前使用的模型。</li>
+<li><strong>直连 AI 服务商</strong>：没有 NotiAsk 自建后端；请求从你的设备直接发送给你配置的服务商。</li>
+<li><strong>本地加密保存密钥</strong>：API Key 使用 Android Keystore 中不可导出的密钥加密后保存在本机。</li>
+</ul>
+</blockquote>
+<h2 id="-使用方式">📱 使用方式</h2>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>添加 AI 配置并启用通知权限</span></span>
+<span class="line"><span>              ↓</span></span>
+<span class="line"><span>下拉并展开 NotiAsk 常驻通知</span></span>
+<span class="line"><span>              ↓</span></span>
+<span class="line"><span>提问 / 切换模型 / 截屏搜索</span></span>
+<span class="line"><span>              ↓</span></span>
+<span class="line"><span>在通知栏阅读、复制 AI 回答</span></span></code></pre>
+<p>NotiAsk 采用<strong>单轮问答</strong>：每次提问独立发送，不会自动附带之前的问题或回答。</p>
+<h2 id="-快速开始">🚀 快速开始</h2>
+<h3 id="要求">要求</h3>
+<ul>
+<li>Android 10（API 29）或更高版本</li>
+<li>一组来自所选 AI 服务商的 API Key</li>
+<li>Android 13 及以上设备需授予通知权限</li>
+</ul>
+<h3 id="配置与提问">配置与提问</h3>
+<ol>
+<li>安装应用后，打开 NotiAsk，点击「添加」。</li>
+<li>选择服务商，填写 API Key、Base URL 和模型名称；需要的话为该配置命名。</li>
+<li>保存时勾选「保存后使用该模型」，再点击「启用通知栏问答」。</li>
+<li>按系统提示授予通知权限。</li>
+<li>下拉并展开 NotiAsk 常驻通知：
+<ul>
+<li>点击「提问」，在通知输入框中发送问题；</li>
+<li>点击「切换模型」，从已保存的配置中选择模型；</li>
+<li>点击「截屏搜索」，完成系统授权后，在「已截图」通知中补充问题，或点击「直接提问」。</li>
+</ul>
+</li>
+<li>展开回答通知阅读结果；点击「复制」可复制回答。</li>
+</ol>
+<blockquote>
+<p>某些系统会积极限制后台服务。若常驻通知不稳定，可在应用的「电池优化」入口中将 NotiAsk 加入允许名单。</p>
+</blockquote>
+<h2 id="-服务商配置">🤖 服务商配置</h2>
+<table>
+<thead>
+<tr>
+<th>服务商</th>
+<th>App 内选项</th>
+<th>Base URL</th>
+<th>协议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenAI</td>
+<td>OpenAI</td>
+<td><code>https://api.openai.com/v1</code></td>
+<td>Chat Completions 兼容</td>
+</tr>
+<tr>
+<td>Anthropic</td>
+<td>Anthropic</td>
+<td><code>https://api.anthropic.com</code></td>
+<td>原生 Messages</td>
+</tr>
+<tr>
+<td>通义千问</td>
+<td>通义千问 / DashScope</td>
+<td><code>https://dashscope.aliyuncs.com/compatible-mode/v1</code></td>
+<td>Chat Completions 兼容</td>
+</tr>
+<tr>
+<td>DeepSeek</td>
+<td>DeepSeek</td>
+<td><code>https://api.deepseek.com</code></td>
+<td>Chat Completions 兼容</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>Kimi / Moonshot</td>
+<td><code>https://api.moonshot.cn/v1</code></td>
+<td>Chat Completions 兼容</td>
+</tr>
+<tr>
+<td>其他服务</td>
+<td>OpenAI 兼容接口</td>
+<td>服务商提供的 API 根地址</td>
+<td>Chat Completions 兼容</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Base URL 填写 API 的<strong>根地址</strong>即可；NotiAsk 会自动补齐接口路径。</li>
+<li>模型名称请以服务商当前文档为准。</li>
+<li>「截屏搜索」需要当前模型及其 API 接口支持图片输入。若不支持，应用会给出失败提示。</li>
+</ul>
+<h2 id="-隐私与安全">🔐 隐私与安全</h2>
+<ul>
+<li>API Key 使用 Android Keystore 中不可导出的 AES-GCM 密钥加密后才写入应用私有存储。</li>
+<li>NotiAsk 不运营自建 API 中转服务器；你的问题、截图和 API Key 不会发送给开发者服务器。</li>
+<li>提问内容和（如使用）截图会发送给你主动配置的 AI 服务商，请同时阅读该服务商的隐私政策与数据处理条款。</li>
+<li>截图在内存中仅保留到当前提问被取走或丢弃，不作为应用媒体库文件保存。</li>
+</ul>
+<h2 id="常见问题">❓常见问题</h2>
+<p><strong>为什么看不到通知输入框？</strong> 先确认已有可用配置且已启用「通知栏问答」。在 Android 13+，还需在系统弹窗中允许通知。</p>
+<p><strong>能否连续对话？</strong> 当前版本是单轮问答，不携带历史上下文。</p>
+<p><strong>误滑掉了常驻通知怎么办？</strong> 应用会尝试恢复；若仍未出现，打开 NotiAsk 并确认服务状态与通知权限。</p>
+<p><strong>为什么重启后需要重新启用？</strong> 为遵循 Android 的后台与前台服务限制，设备重启后需要手动重新启用。</p>
+<h2 id="-贡献">🤝 贡献</h2>
+<p>欢迎提交 Issue、功能建议和 Pull Request。尤其欢迎真实设备上的通知兼容性反馈，以及更多 OpenAI-compatible 服务商的配置经验。</p>
+<p>如果 NotiAsk 对你有帮助，欢迎点一个 Star，让更多人发现这种更轻量的 AI 使用方式。</p>
+<h2 id="-许可证">📄 许可证</h2>
+<p>NotiAsk 采用 MIT 许可证</p>
+</div><div class="transit-actions"><p class="transit-url">原地址<a href="https://github.com/ChaoJueAMeng/NotiAsk" target="_blank" rel="noopener">https://github.com/ChaoJueAMeng/NotiAsk</a></p><a class="transit-cta" href="https://github.com/ChaoJueAMeng/NotiAsk" target="_blank" rel="noopener">前往原地址</a></div><p><a class="transit-back" href="/projects">返回</a></p></article></main><aside class="site-aside widgets-aside"><div class="widget-stack"><script>(()=>{var a=(s,i,o)=>{let r=async()=>{await(await s())()},t=typeof i.value=="object"?i.value:void 0,c={rootMargin:t==null?void 0:t.rootMargin},n=new IntersectionObserver(e=>{for(let l of e)if(l.isIntersecting){n.disconnect(),r();break}},c);for(let e of o.children)n.observe(e)};(self.Astro||(self.Astro={})).visible=a;window.dispatchEvent(new Event("astro:visible"));})();</script><astro-island uid="ZUuafC" prefix="r14" component-url="/_astro/ClockCard.Bky8J4Ej.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{}" ssr client="visible" opts="{&quot;name&quot;:&quot;ClockCard&quot;,&quot;value&quot;:true}" await-children><section class="widget-card clock-card" aria-label="当前日期和时间"><p class="widget-kicker">现在</p><p class="clock-time">––:––:––</p><p class="clock-date">上海时间</p></section><!--astro:end--></astro-island><astro-island uid="ikjdu" prefix="r15" component-url="/_astro/NowBuilding.Bt8u0NwF.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{&quot;title&quot;:[0,&quot;Loop Lab&quot;],&quot;status&quot;:[0,&quot;实验中&quot;],&quot;href&quot;:[0,&quot;/projects/loop-lab/go&quot;]}" ssr client="visible" opts="{&quot;name&quot;:&quot;NowBuilding&quot;,&quot;value&quot;:true}" await-children><section class="widget-card"><p class="widget-kicker">正在做</p><a class="now-title" href="/projects/loop-lab/go">Loop Lab</a><p class="now-status"><span class="now-dot" aria-hidden="true"></span>实验中</p></section><!--astro:end--></astro-island><section class="widget-card"><h2 class="widget-kicker">标签</h2><div class="tag-cloud"><span style="--w:1">Java</span><span style="--w:0.75">Agent</span><span style="--w:0.5">Rust</span><span style="--w:0.5">Spring Boot</span><span style="--w:0.5">uni-app</span><span style="--w:0.25">全栈</span><span style="--w:0.25">桌面</span><span style="--w:0.25">Android</span><span style="--w:0.25">ASS</span><span style="--w:0.25">Cloudflare Workers</span><span style="--w:0.25">Kotlin</span><span style="--w:0.25">Python</span><span style="--w:0.25">Tauri</span><span style="--w:0.25">TypeScript</span><span style="--w:0.25">Whisper</span></div></section><section class="widget-card"><h2 class="widget-kicker">最新笔记</h2><ol class="widget-notes"><li><a href="/notes/meng-meter">贴边一条内存柱，比再开一个任务管理器有用</a><time datetime="2026-10-10T00:00:00.000Z">2026/10/10</time></li><li><a href="/notes/m-harness">给 Agent 写文件之前，先挡住工作区里的 .env</a><time datetime="2026-09-20T00:00:00.000Z">2026/09/20</time></li><li><a href="/notes/notiask-direct-reply">通知栏里直接问 AI：NotiAsk 为什么值得做</a><time datetime="2026-08-29T00:00:00.000Z">2026/08/29</time></li></ol></section><section class="widget-card"><h2 class="widget-kicker">公开动态</h2><div class="activity-week" aria-hidden="true"><span class="activity-cell" style="--n:0"></span><span class="activity-cell is-on" style="--n:4"></span><span class="activity-cell" style="--n:0"></span><span class="activity-cell" style="--n:0"></span><span class="activity-cell" style="--n:0"></span><span class="activity-cell is-on" style="--n:2"></span><span class="activity-cell is-on" style="--n:1"></span></div><ol class="activity-list"><li><a href="https://github.com/ChaoJueAMeng/meng-lab">merged PR · ChaoJueAMeng/meng-lab</a><time>10/15 00:21</time></li><li><a href="https://github.com/ChaoJueAMeng/meng-lab">推送到 ChaoJueAMeng/meng-lab</a><time>10/14 13:48</time></li><li><a href="https://github.com/ChaoJueAMeng/meng-lab">opened PR · ChaoJueAMeng/meng-lab</a><time>10/14 13:30</time></li><li><a href="https://github.com/ChaoJueAMeng/meng-meter">发布 ChaoJueAMeng/meng-meter</a><time>10/10 22:47</time></li></ol><a class="widget-more" href="https://github.com/ChaoJueAMeng">GitHub</a></section></div></aside></div><footer class="site-footer"><div class="wrap"><span>© 2026 <astro-island uid="19Y5w5" prefix="r10" component-url="/_astro/ShinyLabel.BySOkNGa.js" component-export="default" renderer-url="/_astro/client.BpY5R_rx.js" props="{&quot;text&quot;:[0,&quot;阿萌&quot;]}" ssr client="visible" opts="{&quot;name&quot;:&quot;ShinyLabel&quot;,&quot;value&quot;:true}" await-children><span class="shiny-text " style="background-image:linear-gradient(120deg, #6b645b 0%, #6b645b 35%, #1c1915 50%, #6b645b 65%, #6b645b 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-position:150% center">阿萌</span><!--astro:end--></astro-island></span><a href="https://github.com/ChaoJueAMeng">GitHub</a></div></footer></div><script type="module">var e=document.querySelector(`.widgets-aside`);if(e){let t=!1,n=0,r=0,i=()=>e.scrollHeight-e.clientHeight,a=()=>{let t=i();if(t<=1)return!0;let n=e.scrollTop;return n<=1||n>=t-1},o=e=>e.deltaMode===1?e.deltaY*16:e.deltaMode===2?e.deltaY*window.innerHeight:e.deltaY,s=()=>{let e=document.scrollingElement;if(!e||n===0){n=0,r=0;return}let t=n*.5;n-=t;let i=Math.max(0,e.scrollHeight-e.clientHeight),a=Math.min(i,Math.max(0,e.scrollTop+t));a===e.scrollTop?n=0:e.scrollTop=a,Math.abs(n)>.5?r=requestAnimationFrame(s):(n!==0&&(e.scrollTop=Math.min(i,Math.max(0,e.scrollTop+n))),n=0,r=0)},c=t=>{if(t.ctrlKey||t.deltaY===0)return;let a=o(t),c=i();if((a>0?Math.max(0,c-e.scrollTop):e.scrollTop)>1){n=0;return}t.preventDefault(),n+=a,r||=requestAnimationFrame(s)},l=()=>{let n=a();n!==t&&(t=n,t?e.addEventListener(`wheel`,c,{passive:!1}):e.removeEventListener(`wheel`,c))};e.addEventListener(`scroll`,l,{passive:!0}),window.addEventListener(`resize`,l,{passive:!0}),new ResizeObserver(()=>l()).observe(e),l()}</script></body></html>
