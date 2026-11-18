@@ -1,0 +1,273 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light" data-theme-pref="light"><head><meta charset="utf-8"><script>
+			(function () {
+				var KEY = 'meng-lab-theme';
+				function readTheme() {
+					var pref = localStorage.getItem(KEY) || 'light';
+					if (pref !== 'light' && pref !== 'dark' && pref !== 'system') pref = 'light';
+					var theme =
+						pref === 'system'
+							? window.matchMedia('(prefers-color-scheme: dark)').matches
+								? 'dark'
+								: 'light'
+							: pref;
+					return { pref: pref, theme: theme };
+				}
+				function paint(doc) {
+					var state = readTheme();
+					doc.documentElement.dataset.theme = state.theme;
+					doc.documentElement.dataset.themePref = state.pref;
+					doc.documentElement.style.colorScheme = state.theme;
+				}
+				paint(document);
+				document.addEventListener('astro:before-swap', function (event) {
+					paint(event.newDocument);
+				});
+			})();
+		</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CYDbzu1r.js"></script><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon.png" sizes="64x64"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="generator" content="Astro v7.3.3"><meta name="description" content="Spring Boot 外卖系统。管理端、小程序、证书和上传目录都实打实运维过。"><meta name="color-scheme" content="light dark"><meta property="og:title" content="苍穹外卖 · 阿萌的实验室"><meta property="og:description" content="Spring Boot 外卖系统。管理端、小程序、证书和上传目录都实打实运维过。"><meta property="og:type" content="website"><meta property="og:url" content="https://chaojueameng.github.io/projects/cangqiong/"><link rel="canonical" href="https://chaojueameng.github.io/projects/cangqiong/"><title>苍穹外卖 · 阿萌的实验室</title><link rel="stylesheet" href="/_astro/BaseLayout.CYCWSG79.css"></head><body data-page="projects"><div class="site-shell"><style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var l=(n,t)=>{let i=async()=>{await(await n())()},e=typeof t.value=="object"?t.value:void 0,s={timeout:e==null?void 0:e.timeout};"requestIdleCallback"in window?window.requestIdleCallback(i,s):setTimeout(i,s.timeout||200)};(self.Astro||(self.Astro={})).idle=l;window.dispatchEvent(new Event("astro:idle"));})();</script><script>(()=>{var g=Object.defineProperty;var w=(a,s,c)=>s in a?g(a,s,{enumerable:!0,configurable:!0,writable:!0,value:c}):a[s]=c;var l=(a,s,c)=>w(a,typeof s!="symbol"?s+"":s,c);var E=new Set(["__proto__","constructor","prototype"]);{let a={0:t=>y(t),1:t=>c(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(c(t)),5:t=>new Set(c(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>Number.POSITIVE_INFINITY*t},s=t=>{let[p,e]=t;return p in a?a[p](e):void 0},c=t=>t.map(s),y=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([p,e])=>[p,s(e)]));class f extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),n={},d=this.querySelectorAll("template[data-astro-template]");for(let o of d){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute("data-astro-template")||"default"]=o.innerHTML,o.remove())}for(let o of r){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute("name")||"default"]=o.innerHTML)}let u;try{u=this.hasAttribute("props")?y(JSON.parse(this.getAttribute("props"))):{}}catch(o){let i=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(i+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${i}`,this.getAttribute("props"),o),o}let h;await this.hydrator(this)(this.Component,u,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}getRetryImportUrl(e){let r=new URL(e,document.baseURI);return r.searchParams.set("astro-retry",Date.now().toString()),r.toString()}async importWithRetry(e){try{return await import(e)}catch(r){return await new Promise(n=>setTimeout(n,1e3)),import(this.getRetryImportUrl(e))}}handleHydrationError(e){let r=this.getAttribute("component-url"),n=new CustomEvent("astro:hydration-error",{cancelable:!0,bubbles:!0,composed:!0,detail:{error:e,componentUrl:r}});this.dispatchEvent(n)&&console.error(`[astro-island] Error hydrating ${r}`,e)}async start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}try{await Astro[r](async()=>{let n=this.getAttribute("renderer-url");try{let[d,{default:u}]=await Promise.all([this.importWithRetry(this.getAttribute("component-url")),n?this.importWithRetry(n):Promise.resolve({default:()=>()=>{}})]),h=this.getAttribute("component-export")||"default";if(h.includes(".")){this.Component=d;for(let m of h.split(".")){if(E.has(m)||!this.Component||typeof this.Component!="object"&&typeof this.Component!="function"||!Object.hasOwn(this.Component,m))throw new Error(`Invalid component export path: ${h}`);this.Component=this.Component[m]}}else{if(E.has(h))throw new Error(`Invalid component export path: ${h}`);this.Component=d[h]}return this.hydrator=u,this.hydrate}catch(d){return this.handleHydrationError(d),()=>{}}},e,this)}catch(n){this.handleHydrationError(n)}}attributeChangedCallback(){this.hydrate()}}l(f,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",f)}})();</script><astro-island uid="Zy4zK" prefix="r3" component-url="/_astro/AuroraBackground.BtlefEyZ.js" component-export="default" renderer-url="/_astro/client.RMePetAg.js" props="{&quot;data-astro-transition-persist&quot;:[0,&quot;aurora&quot;]}" ssr client="idle" opts="{&quot;name&quot;:&quot;AuroraBackground&quot;,&quot;value&quot;:true}" data-astro-transition-persist="aurora"></astro-island><astro-island uid="2lzHbo" prefix="r4" component-url="/_astro/SiteClickSpark.CykyXo_W.js" component-export="default" renderer-url="/_astro/client.RMePetAg.js" props="{&quot;data-astro-transition-persist&quot;:[0,&quot;spark&quot;]}" ssr client="idle" opts="{&quot;name&quot;:&quot;SiteClickSpark&quot;,&quot;value&quot;:true}" data-astro-transition-persist="spark"></astro-island><header class="site-header"><div class="wrap header-inner"><a class="brand" href="/"><span class="brand-mark"><img src="/apple-touch-icon.png" alt="" width="28" height="28"></span><span class="brand-text"><span class="brand-name">阿萌的实验室</span><span class="brand-sub">FIELD NOTES</span></span></a><div class="header-end"><nav class="nav" aria-label="主导航"><a href="/">主页</a><a href="/projects" aria-current="page">作品</a><a href="/notes">笔记</a><a href="/about">关于</a></nav><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><astro-island uid="Z12foMn" prefix="r5" component-url="/_astro/ThemeToggle.C2LV92yu.js" component-export="default" renderer-url="/_astro/client.RMePetAg.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ThemeToggle&quot;,&quot;value&quot;:true}" await-children><div class="theme-toggle"><button type="button" class="theme-toggle-trigger" aria-haspopup="menu" aria-expanded="false" aria-controls="_r5R_0_" aria-label="主题，当前浅色"><span class="theme-icon" data-icon="light"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.4"></circle><path d="M12 3.2v1.8M12 19v1.8M4.8 4.8l1.3 1.3M17.9 17.9l1.3 1.3M3.2 12h1.8M19 12h1.8M4.8 19.2l1.3-1.3M17.9 6.1l1.3-1.3"></path></svg></span><span class="theme-icon" data-icon="dark"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 14.6A7.6 7.6 0 1 1 9.4 3.8a6.1 6.1 0 0 0 10.8 10.8z"></path></svg></span><span class="theme-icon" data-icon="system"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.2" width="18" height="12" rx="1.8"></rect><path d="M8 19.8h8M12 16.2v3.6"></path></svg></span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="theme-chevron"><path d="M7 10.2 12 15l5-4.8"></path></svg></button><div id="_r5R_0_" class="theme-menu" role="menu" aria-label="主题" hidden=""><button type="button" role="menuitemradio" data-option="light" aria-checked="true" aria-label="浅色" class="is-active"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.4"></circle><path d="M12 3.2v1.8M12 19v1.8M4.8 4.8l1.3 1.3M17.9 17.9l1.3 1.3M3.2 12h1.8M19 12h1.8M4.8 19.2l1.3-1.3M17.9 6.1l1.3-1.3"></path></svg></button><button type="button" role="menuitemradio" data-option="dark" aria-checked="false" aria-label="深色"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 14.6A7.6 7.6 0 1 1 9.4 3.8a6.1 6.1 0 0 0 10.8 10.8z"></path></svg></button><button type="button" role="menuitemradio" data-option="system" aria-checked="false" aria-label="系统"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.2" width="18" height="12" rx="1.8"></rect><path d="M8 19.8h8M12 16.2v3.6"></path></svg></button></div></div><!--astro:end--></astro-island></div></div><div class="reading-progress" aria-hidden="true"><span class="reading-progress-bar"></span></div></header><main class="wrap site-main"><nav class="breadcrumb" aria-label="面包屑"><a href="/projects"><span aria-hidden="true">←</span> 全部作品档案</a></nav><header class="project-sheet"><div class="project-sheet-top"><span class="serial-no">NO.01</span><span class="status-pill" data-tone="live"><span class="status-dot" aria-hidden="true"></span>已上线</span><span class="sheet-provenance">私有仓库 · 档案摘录</span></div><h1 class="sheet-title">苍穹外卖</h1><p class="sheet-summary">Spring Boot 外卖系统。管理端、小程序、证书和上传目录都实打实运维过。</p><div class="sheet-meta-bar"><div class="tags"><a class="chip chip-link" href="/projects?tag=Java">Java</a><a class="chip chip-link" href="/projects?tag=Spring%20Boot">Spring Boot</a><a class="chip chip-link" href="/projects?tag=uni-app">uni-app</a></div><div class="sheet-actions"><a class="btn-primary btn-sm" href="https://cjameng.top/h5/" target="_blank" rel="noopener">访问线上地址<span aria-hidden="true">↗</span></a></div></div></header><div class="article-layout has-toc"><div class="prose article-prose project-prose"><h1 id="苍穹外卖">苍穹外卖</h1>
+<p>基于 Spring Boot 的外卖点餐系统后端，包含管理端与用户端（微信小程序）接口，支持订单管理、数据报表、WebSocket 催单，以及基于 LangChain4j 的 AI 智能菜单推荐。</p>
+<h2 id="技术栈">技术栈</h2>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spring Boot 2.7.3</td>
+<td>基础框架</td>
+</tr>
+<tr>
+<td>MyBatis-Plus</td>
+<td>数据持久化</td>
+</tr>
+<tr>
+<td>MySQL + Druid</td>
+<td>业务库与连接池</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>缓存、店铺营业状态等</td>
+</tr>
+<tr>
+<td>RabbitMQ</td>
+<td>订单延迟关单、支付成功消息</td>
+</tr>
+<tr>
+<td>JWT (jjwt)</td>
+<td>管理端 / 用户端鉴权</td>
+</tr>
+<tr>
+<td>Knife4j 3.0.2</td>
+<td>在线接口文档</td>
+</tr>
+<tr>
+<td>WebSocket</td>
+<td>催单等实时通知</td>
+</tr>
+<tr>
+<td>阿里云 OSS</td>
+<td>图片上传（可选本地存储）</td>
+</tr>
+<tr>
+<td>微信支付</td>
+<td>小程序支付</td>
+</tr>
+<tr>
+<td>LangChain4j 0.36.2</td>
+<td>AI 智能推荐（OpenAI 兼容协议）</td>
+</tr>
+<tr>
+<td>Apache POI</td>
+<td>运营数据 Excel 导出</td>
+</tr>
+</tbody>
+</table>
+<h2 id="模块结构">模块结构</h2>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>sky-take-out</span></span>
+<span class="line"><span>├── sky-common    # 公共层：工具类、常量、异常、统一返回、配置属性</span></span>
+<span class="line"><span>├── sky-pojo      # 数据模型：entity / dto / vo</span></span>
+<span class="line"><span>└── sky-server    # 启动与业务：Controller、Service、Mapper、配置、MQ、WebSocket、AI</span></span></code></pre>
+<p>依赖关系：<code>sky-server</code> → <code>sky-common</code> + <code>sky-pojo</code></p>
+<h2 id="功能概览">功能概览</h2>
+<h3 id="管理端admin">管理端（<code>/admin/**</code>）</h3>
+<ul>
+<li>员工登录与权限管理</li>
+<li>分类 / 菜品 / 套餐 CRUD、启停售</li>
+<li>文件上传（OSS 或本地存储）</li>
+<li>店铺营业状态</li>
+<li>订单接单、拒单、派送、完成</li>
+<li>营业额 / 用户 / 订单统计、销量 Top10、Excel 导出</li>
+<li>工作台今日经营数据</li>
+<li>WebSocket 接收催单等通知</li>
+</ul>
+<h3 id="用户端user">用户端（<code>/user/**</code>）</h3>
+<ul>
+<li>微信登录</li>
+<li>浏览分类、菜品、套餐</li>
+<li>购物车、地址簿</li>
+<li>下单、支付、历史订单、再来一单、催单</li>
+<li><strong>AI 智能菜单推荐</strong></li>
+</ul>
+<h2 id="ai-智能推荐">AI 智能推荐</h2>
+<p>基于 LangChain4j + Function Calling：大模型可自动查询用户历史订单偏好与当前起售菜单，再生成自然语言回复与结构化推荐列表。</p>
+<p>支持任意 <strong>OpenAI 兼容</strong> 接口（Kimi / DeepSeek / 通义千问等）。</p>
+<h3 id="接口">接口</h3>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="http"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F47067">POST</span><span style="color:#24292E;--shiki-dark:#ADBAC7"> /user/ai/recommend</span></span>
+<span class="line"><span style="color:#22863A;--shiki-dark:#8DDB8C">Header</span><span style="color:#D73A49;--shiki-dark:#F47067">:</span><span style="color:#032F62;--shiki-dark:#96D0FF"> authentication: &lt;用户端 JWT&gt;</span></span>
+<span class="line"><span style="color:#22863A;--shiki-dark:#8DDB8C">Content-Type</span><span style="color:#D73A49;--shiki-dark:#F47067">:</span><span style="color:#032F62;--shiki-dark:#96D0FF"> application/json</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">{</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#8DDB8C">  "message"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">: </span><span style="color:#032F62;--shiki-dark:#96D0FF">"我想吃清淡一点的"</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">}</span></span></code></pre>
+<p>响应示例：</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">{</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#8DDB8C">  "code"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">: </span><span style="color:#005CC5;--shiki-dark:#6CB6FF">1</span><span style="color:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#8DDB8C">  "data"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">: {</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#8DDB8C">    "reply"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">: </span><span style="color:#032F62;--shiki-dark:#96D0FF">"根据您的口味，为您推荐以下几道清淡菜品……"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#8DDB8C">    "recommendations"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">: [</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">      {</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#8DDB8C">        "itemId"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">: </span><span style="color:#005CC5;--shiki-dark:#6CB6FF">1</span><span style="color:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#8DDB8C">        "itemName"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">: </span><span style="color:#032F62;--shiki-dark:#96D0FF">"清炒时蔬"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#8DDB8C">        "itemType"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">: </span><span style="color:#032F62;--shiki-dark:#96D0FF">"dish"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#8DDB8C">        "price"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">: </span><span style="color:#005CC5;--shiki-dark:#6CB6FF">18.00</span><span style="color:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#8DDB8C">        "image"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">: </span><span style="color:#032F62;--shiki-dark:#96D0FF">"https://..."</span><span style="color:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#8DDB8C">        "description"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">: </span><span style="color:#032F62;--shiki-dark:#96D0FF">"..."</span><span style="color:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#8DDB8C">        "reason"</span><span style="color:#24292E;--shiki-dark:#ADBAC7">: </span><span style="color:#032F62;--shiki-dark:#96D0FF">"清淡少油，符合您的需求"</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">      }</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">    ]</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">  }</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">}</span></span></code></pre>
+<p><code>itemType</code> 取值：<code>dish</code>（菜品）或 <code>setmeal</code>（套餐）。</p>
+<h3 id="配置项skyai">配置项（<code>sky.ai.*</code>）</h3>
+<table>
+<thead>
+<tr>
+<th>配置键</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sky.ai.api-key</code></td>
+<td>（必填）</td>
+<td>API Key，也可通过环境变量 <code>SKY_AI_API_KEY</code> 注入</td>
+</tr>
+<tr>
+<td><code>sky.ai.base-url</code></td>
+<td><code>https://api.moonshot.cn/v1</code></td>
+<td>OpenAI 兼容 Base URL</td>
+</tr>
+<tr>
+<td><code>sky.ai.model</code></td>
+<td><code>moonshot-v1-32k</code></td>
+<td>模型名称</td>
+</tr>
+<tr>
+<td><code>sky.ai.max-tokens</code></td>
+<td><code>2000</code></td>
+<td>最大 Token</td>
+</tr>
+<tr>
+<td><code>sky.ai.temperature</code></td>
+<td><code>0.7</code></td>
+<td>温度</td>
+</tr>
+<tr>
+<td><code>sky.ai.timeout-seconds</code></td>
+<td><code>90</code></td>
+<td>超时（秒）</td>
+</tr>
+<tr>
+<td><code>sky.ai.log-enabled</code></td>
+<td><code>false</code></td>
+<td>是否打印 LLM 请求/响应日志</td>
+</tr>
+</tbody>
+</table>
+<p>厂商示例：</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#6A737D;--shiki-dark:#768390"># Kimi（默认）</span></span>
+<span class="line"><span style="color:#22863A;--shiki-dark:#8DDB8C">sky</span><span style="color:#24292E;--shiki-dark:#ADBAC7">:</span></span>
+<span class="line"><span style="color:#22863A;--shiki-dark:#8DDB8C">  ai</span><span style="color:#24292E;--shiki-dark:#ADBAC7">:</span></span>
+<span class="line"><span style="color:#22863A;--shiki-dark:#8DDB8C">    api-key</span><span style="color:#24292E;--shiki-dark:#ADBAC7">: </span><span style="color:#032F62;--shiki-dark:#96D0FF">${SKY_AI_API_KEY:}</span></span>
+<span class="line"><span style="color:#22863A;--shiki-dark:#8DDB8C">    base-url</span><span style="color:#24292E;--shiki-dark:#ADBAC7">: </span><span style="color:#032F62;--shiki-dark:#96D0FF">https://api.moonshot.cn/v1</span></span>
+<span class="line"><span style="color:#22863A;--shiki-dark:#8DDB8C">    model</span><span style="color:#24292E;--shiki-dark:#ADBAC7">: </span><span style="color:#032F62;--shiki-dark:#96D0FF">moonshot-v1-32k</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#768390"># DeepSeek</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#768390">#   base-url: https://api.deepseek.com</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#768390">#   model: deepseek-chat</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#768390"># 通义千问</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#768390">#   base-url: https://dashscope.aliyuncs.com/compatible-mode/v1</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#768390">#   model: qwen-plus</span></span></code></pre>
+<blockquote>
+<p>未配置 <code>sky.ai.api-key</code> 时服务将无法启动。</p>
+</blockquote>
+<h2 id="环境要求">环境要求</h2>
+<ul>
+<li>JDK 8+</li>
+<li>Maven 3.6+（或使用项目自带 <code>mvnw</code>）</li>
+<li>MySQL</li>
+<li>Redis</li>
+<li>RabbitMQ（需安装 <a href="https://github.com/rabbitmq/rabbitmq-delayed-message-exchange">延迟消息插件</a>）</li>
+<li>AI 服务 API Key（Kimi / DeepSeek / 通义等）</li>
+</ul>
+<p>可选：阿里云 OSS、微信小程序 AppId/Secret、微信支付、百度地图 AK。</p>
+<h2 id="快速开始">快速开始</h2>
+<h3 id="1-准备配置文件">1. 准备配置文件</h3>
+<p>仓库已提供示例配置（不含真实密钥）。复制后填写本地值：</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#005CC5;--shiki-dark:#6CB6FF">cd</span><span style="color:#032F62;--shiki-dark:#96D0FF"> sky-server/src/main/resources</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#F69D50">cp</span><span style="color:#032F62;--shiki-dark:#96D0FF"> application.yml.example</span><span style="color:#032F62;--shiki-dark:#96D0FF"> application.yml</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#F69D50">cp</span><span style="color:#032F62;--shiki-dark:#96D0FF"> application-dev.yml.example</span><span style="color:#032F62;--shiki-dark:#96D0FF"> application-dev.yml</span></span></code></pre>
+<p>Windows（PowerShell）：</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#24292E;--shiki-dark:#ADBAC7">cd sky</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">server\src\main\resources</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#6CB6FF">Copy-Item</span><span style="color:#24292E;--shiki-dark:#ADBAC7"> application.yml.example application.yml</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#6CB6FF">Copy-Item</span><span style="color:#24292E;--shiki-dark:#ADBAC7"> application</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">dev.yml.example application</span><span style="color:#D73A49;--shiki-dark:#F47067">-</span><span style="color:#24292E;--shiki-dark:#ADBAC7">dev.yml</span></span></code></pre>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>sky-server/src/main/resources/</span></span>
+<span class="line"><span>├── application.yml.example      # 可提交</span></span>
+<span class="line"><span>├── application-dev.yml.example  # 可提交</span></span>
+<span class="line"><span>├── application.yml              # 本地填写，勿提交</span></span>
+<span class="line"><span>└── application-dev.yml          # 本地敏感配置，勿提交</span></span></code></pre>
+<p>按需修改 MySQL / Redis / RabbitMQ / JWT / AI Key 等；OSS、微信、百度等为可选配置。</p>
+<h3 id="2-启动">2. 启动</h3>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D;--shiki-dark:#768390"># 根目录</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#F69D50">./mvnw</span><span style="color:#005CC5;--shiki-dark:#6CB6FF"> -pl</span><span style="color:#032F62;--shiki-dark:#96D0FF"> sky-server</span><span style="color:#005CC5;--shiki-dark:#6CB6FF"> -am</span><span style="color:#032F62;--shiki-dark:#96D0FF"> spring-boot:run</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#768390"># Windows</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#F69D50">mvnw.cmd</span><span style="color:#005CC5;--shiki-dark:#6CB6FF"> -pl</span><span style="color:#032F62;--shiki-dark:#96D0FF"> sky-server</span><span style="color:#005CC5;--shiki-dark:#6CB6FF"> -am</span><span style="color:#032F62;--shiki-dark:#96D0FF"> spring-boot:run</span></span></code></pre>
+<p>或在 IDE 中运行主类 <code>com.sky.SkyApplication</code>。</p>
+<h3 id="3-接口文档">3. 接口文档</h3>
+<p>启动后访问：<a href="http://localhost:8080/doc.html">http://localhost:8080/doc.html</a>（Knife4j，含管理端 / 用户端分组）</p>
+<h2 id="目录结构">目录结构</h2>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="background-color:#fff;--shiki-dark-bg:#22272e;color:#24292e;--shiki-dark:#adbac7; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CangQiongWaiMai/</span></span>
+<span class="line"><span>├── pom.xml</span></span>
+<span class="line"><span>├── mvnw / mvnw.cmd</span></span>
+<span class="line"><span>├── sky-common/          # 公共模块</span></span>
+<span class="line"><span>├── sky-pojo/            # 实体与传输对象</span></span>
+<span class="line"><span>└── sky-server/</span></span>
+<span class="line"><span>    └── src/main/java/com/sky/</span></span>
+<span class="line"><span>        ├── SkyApplication.java</span></span>
+<span class="line"><span>        ├── ai/              # AI 助手与工具</span></span>
+<span class="line"><span>        ├── config/          # Redis / MQ / OSS / WebMvc / LangChain4j 等</span></span>
+<span class="line"><span>        ├── controller/</span></span>
+<span class="line"><span>        │   ├── admin/       # 管理端接口</span></span>
+<span class="line"><span>        │   └── user/        # 用户端接口</span></span>
+<span class="line"><span>        ├── handler/</span></span>
+<span class="line"><span>        ├── interceptor/     # JWT 拦截器</span></span>
+<span class="line"><span>        ├── listener/        # MQ 监听（延迟关单、支付成功）</span></span>
+<span class="line"><span>        ├── mapper/</span></span>
+<span class="line"><span>        ├── service/</span></span>
+<span class="line"><span>        ├── task/            # 定时任务</span></span>
+<span class="line"><span>        └── websocket/       # WebSocket 服务</span></span></code></pre>
+<h2 id="注意事项">注意事项</h2>
+<ol>
+<li><strong>切勿提交</strong> <code>application-dev.yml</code>、<code>.env</code> 等含数据库密码、API Key、微信密钥的文件。</li>
+<li>RabbitMQ 延迟关单依赖 delayed message 插件，未安装会导致相关交换机声明失败。</li>
+<li>管理端请求头默认使用 <code>token</code>，用户端使用 <code>authentication</code>。</li>
+<li>AI 推荐依赖外部大模型服务，网络与配额异常时请检查 <code>sky.ai.*</code> 配置与服务商控制台。</li>
+</ol>
+<h2 id="license">License</h2>
+<p>仅供学习与实战参考。</p>
+</div><details class="mobile-toc"><summary class="mobile-toc-summary"><span class="mobile-toc-label"><span class="mobile-toc-tag">CONTENTS</span>本文目录（16 节）</span><svg class="mobile-toc-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg></summary><ol class="mobile-toc-list"><li class="toc-item"><a href="#技术栈" data-mobile-toc-link="技术栈">技术栈</a></li><li class="toc-item"><a href="#模块结构" data-mobile-toc-link="模块结构">模块结构</a></li><li class="toc-item"><a href="#功能概览" data-mobile-toc-link="功能概览">功能概览</a></li><li class="toc-item is-sub"><a href="#管理端admin" data-mobile-toc-link="管理端admin">管理端（/admin/**）</a></li><li class="toc-item is-sub"><a href="#用户端user" data-mobile-toc-link="用户端user">用户端（/user/**）</a></li><li class="toc-item"><a href="#ai-智能推荐" data-mobile-toc-link="ai-智能推荐">AI 智能推荐</a></li><li class="toc-item is-sub"><a href="#接口" data-mobile-toc-link="接口">接口</a></li><li class="toc-item is-sub"><a href="#配置项skyai" data-mobile-toc-link="配置项skyai">配置项（sky.ai.*）</a></li><li class="toc-item"><a href="#环境要求" data-mobile-toc-link="环境要求">环境要求</a></li><li class="toc-item"><a href="#快速开始" data-mobile-toc-link="快速开始">快速开始</a></li><li class="toc-item is-sub"><a href="#1-准备配置文件" data-mobile-toc-link="1-准备配置文件">1. 准备配置文件</a></li><li class="toc-item is-sub"><a href="#2-启动" data-mobile-toc-link="2-启动">2. 启动</a></li><li class="toc-item is-sub"><a href="#3-接口文档" data-mobile-toc-link="3-接口文档">3. 接口文档</a></li><li class="toc-item"><a href="#目录结构" data-mobile-toc-link="目录结构">目录结构</a></li><li class="toc-item"><a href="#注意事项" data-mobile-toc-link="注意事项">注意事项</a></li><li class="toc-item"><a href="#license" data-mobile-toc-link="license">License</a></li></ol></details><aside class="toc-rail" aria-label="章节目录"><nav class="toc-card"><p class="toc-title">CONTENTS · 目录</p><ol class="toc-list"><li class="toc-item"><a href="#技术栈" data-toc-link="技术栈">技术栈</a></li><li class="toc-item"><a href="#模块结构" data-toc-link="模块结构">模块结构</a></li><li class="toc-item"><a href="#功能概览" data-toc-link="功能概览">功能概览</a></li><li class="toc-item is-sub"><a href="#管理端admin" data-toc-link="管理端admin">管理端（/admin/**）</a></li><li class="toc-item is-sub"><a href="#用户端user" data-toc-link="用户端user">用户端（/user/**）</a></li><li class="toc-item"><a href="#ai-智能推荐" data-toc-link="ai-智能推荐">AI 智能推荐</a></li><li class="toc-item is-sub"><a href="#接口" data-toc-link="接口">接口</a></li><li class="toc-item is-sub"><a href="#配置项skyai" data-toc-link="配置项skyai">配置项（sky.ai.*）</a></li><li class="toc-item"><a href="#环境要求" data-toc-link="环境要求">环境要求</a></li><li class="toc-item"><a href="#快速开始" data-toc-link="快速开始">快速开始</a></li><li class="toc-item is-sub"><a href="#1-准备配置文件" data-toc-link="1-准备配置文件">1. 准备配置文件</a></li><li class="toc-item is-sub"><a href="#2-启动" data-toc-link="2-启动">2. 启动</a></li><li class="toc-item is-sub"><a href="#3-接口文档" data-toc-link="3-接口文档">3. 接口文档</a></li><li class="toc-item"><a href="#目录结构" data-toc-link="目录结构">目录结构</a></li><li class="toc-item"><a href="#注意事项" data-toc-link="注意事项">注意事项</a></li><li class="toc-item"><a href="#license" data-toc-link="license">License</a></li></ol></nav></aside><script type="module">var e=null;function t(){e?.(),e=null;let t=document.querySelector(`details.mobile-toc`);t&&t.dataset.bound!==`true`&&(t.dataset.bound=`true`,t.querySelectorAll(`[data-mobile-toc-link]`).forEach(e=>{e.addEventListener(`click`,()=>{t.open=!1})}));let n=Array.from(document.querySelectorAll(`[data-toc-link]`));if(n.length===0)return;let r=n.map(e=>{let t=e.dataset.tocLink;return t?document.getElementById(t):null}).filter(e=>!!e);if(r.length===0)return;let i=e=>{n.forEach(t=>{t.classList.toggle(`is-active`,t.dataset.tocLink===e)})};i(r[0].id);let a=new IntersectionObserver(e=>{let t=e.filter(e=>e.isIntersecting).sort((e,t)=>e.boundingClientRect.top-t.boundingClientRect.top);t.length>0&&i(t[0].target.id)},{rootMargin:`-84px 0px -68% 0px`,threshold:[0,1]});r.forEach(e=>a.observe(e)),e=()=>a.disconnect()}document.addEventListener(`astro:page-load`,t);</script></div><nav class="entry-pager" aria-label="相邻作品导航"><div></div><a class="pager-card is-next" href="/projects/notiask"><span class="pager-label">下一个作品 →</span><strong>NotiAsk</strong></a></nav></main><footer class="site-footer"><div class="wrap footer-inner"><div class="footer-meta"><span class="footer-stamp">MENG-LAB</span><span>© 2026 阿萌 · 把做过的事记下来</span></div><nav class="footer-links" aria-label="页脚链接"><a href="/projects">作品</a><a href="/notes">笔记</a><a href="/about">关于</a><a href="https://github.com/ChaoJueAMeng" target="_blank" rel="noopener">GitHub ↗</a><a href="https://github.com/ChaoJueAMeng/meng-lab" target="_blank" rel="noopener">源码 ↗</a></nav></div></footer><nav class="mobile-nav-dock" aria-label="移动端底部导航"><a class="dock-link" href="/"><span class="dock-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5.5 9.5V20h13V9.5"></path></svg></span><span class="dock-label">主页</span></a><a class="dock-link is-active" href="/projects" aria-current="page"><span class="dock-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="4" width="7" height="7" rx="1.5"></rect><rect x="3.5" y="13.5" width="7" height="6.5" rx="1.5"></rect><rect x="13.5" y="13.5" width="7" height="6.5" rx="1.5"></rect></svg></span><span class="dock-label">作品</span></a><a class="dock-link" href="/notes"><span class="dock-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h12A1.5 1.5 0 0 1 19.5 5v14a1.5 1.5 0 0 1-1.5 1.5H6A1.5 1.5 0 0 1 4.5 19V5A1.5 1.5 0 0 1 6 3.5Z"></path><path d="M8.5 8.5h7M8.5 12.5h7M8.5 16.5h4.5"></path></svg></span><span class="dock-label">笔记</span></a><a class="dock-link" href="/about"><span class="dock-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.5"></circle><path d="M5.5 19.5a6.5 6.5 0 0 1 13 0"></path></svg></span><span class="dock-label">关于</span></a></nav></div><script type="module">function e(){document.querySelectorAll(`.prose pre`).forEach(e=>{if(e.dataset.copyReady===`true`)return;e.dataset.copyReady=`true`;let t=document.createElement(`div`);t.className=`code-block-wrap`,e.parentNode?.insertBefore(t,e),t.appendChild(e);let n=e.getAttribute(`data-language`);if(n&&n!==`plaintext`&&n!==`text`){let e=document.createElement(`span`);e.className=`code-lang-badge`,e.textContent=n,t.appendChild(e)}let r=document.createElement(`button`);r.type=`button`,r.className=`code-copy-btn`,r.setAttribute(`aria-label`,`复制代码`),r.textContent=`复制`;let i=0;r.addEventListener(`click`,async()=>{let t=e.querySelector(`code`)?.innerText??e.innerText;try{await navigator.clipboard.writeText(t),r.textContent=`已复制 ✓`,r.classList.add(`is-copied`),window.clearTimeout(i),i=window.setTimeout(()=>{r.textContent=`复制`,r.classList.remove(`is-copied`)},1800)}catch{r.textContent=`复制失败`}}),t.appendChild(r)}),document.querySelectorAll(`.prose table`).forEach(e=>{if(e.dataset.scrollReady===`true`)return;e.dataset.scrollReady=`true`;let t=document.createElement(`div`);t.className=`table-scroll-wrap`,e.parentNode?.insertBefore(t,e),t.appendChild(e)})}var t=null;function n(){t?.(),t=null;let e=document.querySelector(`.reading-progress-bar`),n=document.querySelector(`.article-prose`);if(!e||!n)return;let r=!1,i=()=>{r=!1;let t=n.getBoundingClientRect(),i=window.innerHeight,a=Math.max(1,n.offsetHeight-i*.55),o=Math.min(a,Math.max(0,-t.top+i*.2)),s=Math.max(0,Math.min(1,o/a));e.style.transform=`scaleX(${s.toFixed(4)})`},a=()=>{r||(r=!0,requestAnimationFrame(i))};i(),window.addEventListener(`scroll`,a,{passive:!0}),window.addEventListener(`resize`,a,{passive:!0}),t=()=>{window.removeEventListener(`scroll`,a),window.removeEventListener(`resize`,a)}}document.addEventListener(`astro:page-load`,()=>{e(),n()});</script></body></html>

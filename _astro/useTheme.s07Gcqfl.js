@@ -1,0 +1,1 @@
+import{r as e,t}from"./react.yIOJJ3r4.js";var n=e(t(),1);function r(){let[e,t]=(0,n.useState)(`light`);return(0,n.useEffect)(()=>{let e=document.documentElement,n=()=>{t(e.dataset.theme===`dark`?`dark`:`light`)};n();let r=new MutationObserver(n);return r.observe(e,{attributes:!0,attributeFilter:[`data-theme`]}),()=>r.disconnect()},[]),e}export{r as t};
